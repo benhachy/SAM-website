@@ -1,0 +1,23 @@
+{% extends 'main/home.html' %}
+
+{% load static %}
+
+{% block save-bas %}
+ <img src="{% static 'main/images/myteam.jpeg' %}" alt="myteam_logo" style="margin-left:1cm">
+{% endblock %}
+
+{% block success %}
+<div class= "navbar-home-email" style="width:79%; height:1.5cm; background-color: rgba(185, 254, 185, 0.5);border:1px solid rgba(185, 254, 185, 0.5); " >
+    <p id="section">
+        {% if nbr == 1 %}
+        Votre fichier a été enregistré avec succès !
+        {% else %}
+        Vos fichiers ont été enregistrés avec succès !
+        {% endif %}
+    </p>
+</div>
+
+{% block results %}
+{% endblock %}
+
+{% endblock %}

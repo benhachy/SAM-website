@@ -1,0 +1,14 @@
+{% extends 'registration/login.html' %}
+
+{% block Aremplir %}Mot de passe oublié{% endblock %}
+
+
+{% block select %}
+{% load crispy_forms_tags %}
+
+{{form_recuperation|crispy}}
+{% endblock %}
+
+{% block bouton%}
+<button type="submit" class="btn btn-primary" name="recuperer" value="recuperer" > <span class="changement">Récupérer mon mot de passe</span> </button>
+{% endblock %}

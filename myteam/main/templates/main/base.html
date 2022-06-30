@@ -1,0 +1,188 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>{%block title%}SAM - Synthesis Analysis Motor{%endblock%}</title>
+
+    
+        <style type="text/css">
+            .sidenav {
+                background-color: rgb(240, 242, 246);
+                background-attachment: fixed;
+                flex-shrink: 0;
+                height: 130%;
+                overflow: auto;
+                padding: 6rem 1rem;
+                position: fixed !important;
+                transition: margin-left 300ms ease 0s, box-shadow 300ms ease 0s;
+                width: 355px;
+                z-index: 100;
+                margin-left: 0px;
+                text-align:center;
+            }
+
+            .sidenav a{
+                padding: 6px 8px 6px 16px; 
+                text-decoration:none;
+                color:black;
+                display:block;
+            }
+
+            .sidenav a:hover{
+                color:rgb(255,140,0);
+                text-decoration: none;
+            }
+
+            .sidenav input{
+                width:300px;
+                height:1cm;
+            }
+
+            .navbar-home {
+                text-align: left;
+            }
+
+            .navbar-home button{
+                margin-bottom:20px;
+            }
+
+            
+            .navbar-home a{
+                padding:0;
+                color:rgb(49, 51, 63);
+                text-decoration: none;
+                
+            }
+            
+            .navbar-home a:hover{
+                color:rgb(255,140,0);
+                text-decoration: none;
+            }
+            
+            .navbar-home-email{
+                height:90px;
+                width:95%;
+                padding:16px;
+                background-color: rgba(28, 131, 225, 0.1);
+                margin-bottom:0.5cm;
+                border-radius:0.25rem;
+                border:1px solid rgba(28, 131, 225, 0.1);
+                font-family: "Source Sans Pro", sans-serif;
+                font-size: 16px;
+            }
+
+            .main {
+                margin-left: 400px;
+                padding:75px 75px 0px 20px;
+
+            }
+
+            .register {
+                margin-left: 330px;
+                margin-top:10px;
+            }
+            
+            .btn-group a{
+                color:black;
+                font-size: medium;
+            }
+
+            .btn-group button{
+                margin-top:1cm;
+                background-color: white;
+                width:300px;
+            }
+
+            .maintitle{
+                font:bold; 
+                margin:1cm;
+                font-family: "Source Sans Pro", sans-serif;
+                font-weight:700;
+                color:rgb(49,51,63);
+                line-height:1.4;
+            }
+
+            .lastphrase{
+                font-family:"Source Code Pro", monospace;
+                margin-left:1.3cm;
+            }
+
+            .download{
+                margin-left:12.5cm;
+                font-family:"Source Sans Pro", sans-serif;
+                font-weight:400;
+                color:rgb(49,51,63);
+                line-height:1.4;
+                font-size: calc(1.3rem + .6vw);
+                position:relative;
+            }
+
+            .download input{
+                width:70%;
+            }
+
+            .changement:hover{
+                color:rgb(255,140,0);
+            }
+
+        </style>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     
+
+        
+    </head>
+
+    <body>
+      
+        <div class="sidenav" >
+
+        {%block navbar%}
+        <p> </p>
+        {%endblock%}
+        </div>
+
+        {% block register-error %}
+    
+        {% endblock %}
+        
+
+        <div class="main">
+            
+            {% block save-bas %}
+            <a href="/home">
+            <img src="{% static 'main/images/myteam.jpeg' %}" alt="myteam_logo" style="margin:1cm;">
+            </a>
+            {% endblock %}
+            
+            <h1 class="maintitle" >SAM : Synthesis Analysis Motor</h2>
+            <p style="margin: 1cm; margin-bottom: 0; width:79%; margin-left:1.3cm;">SAM est un outil d’analyse de la nature d’un projet par la description des travaux réalisés. Il estime le niveau de difficulté technologique dans sa réalisation (<em>Innovation</em> vs <em>R&D</em>). SAM permet aussi de valider la cohérence des budgets déclarés.</p>
+            <br>
+            {% block connected%}
+            <p class="lastphrase">Veuillez vous connecter ou créer un compte avec votre clé MYTEAM.</p>
+            {% endblock %}
+        </div>
+
+        {% block info%}
+        {% endblock %}
+        
+       {% block download%}
+       {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+
+    <a id="bottom"></a>
+
+    </body>
+
+
+</html>

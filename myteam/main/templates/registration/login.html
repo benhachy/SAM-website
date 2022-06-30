@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+
+{% block navbar %}
+
+    <h3 style = "margin-top:0mm ;">Authentification</h4>
+    
+    <div class="btn-group" >
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: black; height:40px;">
+            {% block Aremplir %}Connexion{% endblock %}
+        </button>
+        <div class="dropdown-menu" style="width:300px">
+        <a class="dropdown-item" href="/">Connexion</a>
+        <a class="dropdown-item" href="../register/">Inscription</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="../recuperation/">Mot de passe oublié</a>
+        </div>
+    </div>
+
+    <br><br>
+    {% load crispy_forms_tags %}
+    <form method="post" class="from-group" style="margin-top:1cm; ">
+        {% csrf_token %}
+        {% block select %}
+            {{form|crispy}}
+        {% endblock %}
+        <br>     
+        {% block bouton %}<button type="submit" class="btn btn-primary"> <span class="changement"> Se connecter </span></button>   {% endblock %}
+    </form>
+
+    
+    {% block message %}
+    {% endblock %}
+
+    {% block register-error %}
+    {% endblock %}
+
+{% endblock %}
+
+
+
