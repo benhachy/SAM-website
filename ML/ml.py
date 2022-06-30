@@ -1,5 +1,8 @@
 def naivemodel(fichier):
-    
+    '''
+    Simulation des résultats données par l'outil SAM "Synthesis Analysis Motor" de MyTeam qui reçoit en entrée un document et renvoie sa catégorie.  
+    '''
+
     innovationp = "Tres probablement innovation "
     innovation =  "Innovation mais pourrait passer en R&D "
     rd = "Probablement R&D "
