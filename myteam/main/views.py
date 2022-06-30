@@ -17,29 +17,28 @@ from ML.ml import naivemodel
 from datetime import datetime
 
 from django.contrib.auth import update_session_auth_hash
-from django.contrib import messages
-
 
 from django.contrib.auth.views import PasswordChangeView
-from django.urls import reverse_lazy
 
-# Create your views here.
 
-# Modifications du mot de passe
-class PasswordsChangeView(PasswordChangeView):
-    form_class = PasswordChangingForm
-    success_url = '../../home/success-password/'
 
-'''
-La vue en dessous permet de rediriger l'utilisateur vers la page d'authentification en rentrant au site 
-'''
+
 def base(request):
+    '''
+    Cette vue permet de rediriger l'utilisateur vers la page d'authentification en accédant au site 
+    '''
     return redirect('/login')
 
+
 def register(request):
-    # Le cas de POST
+    '''
+    C'est cette vue qui gère la création d'un compte utilisateur
+    '''
+
+    # Le cas d'une requête POST
     if request.method == "POST":
         form = RegisterForm(request.POST)
+
         if form.is_valid():
             form.save()
             form = RegisterForm()
@@ -49,7 +48,7 @@ def register(request):
             form = RegisterForm()
             return render(request, "registration/registration-error.html",{"form_register":form})
     
-    # Le cas de GET
+    # Le cas d'une requête GET
     else :
         show = 1
         form = RegisterForm()
@@ -58,9 +57,15 @@ def register(request):
 
 
 def recuperation(request):
+    '''
+    Cette vue permet la récupération du compte de l'utilisateur en envoyant un mail de récuperation à sa boite mail
+    '''
+
+    # Le cas d'une requête d'une POST
     if request.method=="POST":
         email = request.POST["email"]
-        # Here we need to handle sending mails
+
+        # La fonction send_mail permet l'envoi de mail à l'aide des paramètres décrits dans le fichiers myteam/settings.py
         send_mail(
         'Recuperation compte SAM-MYTEAM',
         'Here is the message.',
@@ -68,20 +73,43 @@ def recuperation(request):
         [email],
         fail_silently=False,
         )
+
         form = RecuperationForm({"email":email})
         return render(request, "registration/recuperation-sent.html", {"form_recuperation":form})
-   
-    form = RecuperationForm()
-    return render(request, "registration/recuperation.html", {"form_recuperation":form})
 
-'''
-Cette vue permet principalement à l'utilisateur d'utiliser l'outil NLP et offre d'autre fonctionnalités: 
+    # Le cas d'une requête GET
+    else : 
+        form = RecuperationForm()
+        return render(request, "registration/recuperation.html", {"form_recuperation":form})
 
-- Elle gère l'enregistrement des fichiers
-- Elle est liée à la vue qui permet la modification du mot de passe
-- Elle permets à l'utilisateur de se déconnecter
-'''
+
+
+class PasswordsChangeView(PasswordChangeView):
+    ''' 
+    Cette vue traite la modification du mot de passe de l'utilisateur
+    '''
+    form_class = PasswordChangingForm
+    success_url = '../../home/success-password/'
+
+
+
+def success_password(request):
+    '''
+    C'est cette vue qui s'affiche à l'utilisateur lorsque son mot de passe est modifié avec succès
+    '''
+    return render(request, "registration/success-password.html")
+
+
+
 def home(request):
+    '''
+    Cette vue permet principalement à l'utilisateur d'utiliser l'outil NLP et offre d'autre fonctionnalités: 
+
+    - Elle gère l'enregistrement des fichiers
+    - Elle est liée à la vue qui permet la modification du mot de passe
+    - Elle permets à l'utilisateur de se déconnecter
+    '''
+    
     # Le cas où l'utilisateur est identifié
     if request.user.is_authenticated :
         if request.method=="POST":
@@ -125,5 +153,4 @@ def home(request):
     else :
         return redirect("/login")
 
-def success_password(request):
-    return render(request, "registration/success-password.html")
+
