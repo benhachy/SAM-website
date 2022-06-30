@@ -1,0 +1,118 @@
+.sidenav {
+    background-color: rgb(240, 242, 246);
+    background-attachment: fixed;
+    flex-shrink: 0;
+    height: 130%;
+    overflow: auto;
+    padding: 6rem 1rem;
+    position: fixed !important;
+    transition: margin-left 300ms ease 0s, box-shadow 300ms ease 0s;
+    width: 355px;
+    z-index: 100;
+    margin-left: 0px;
+    text-align:center;
+}
+
+.sidenav a{
+    padding: 6px 8px 6px 16px; 
+    text-decoration:none;
+    color:black;
+    display:block;
+}
+
+.sidenav a:hover{
+    color:rgb(255,140,0);
+    text-decoration: none;
+}
+
+.sidenav input{
+    width:300px;
+    height:1cm;
+}
+
+.navbar-home {
+    text-align: left;
+}
+
+.navbar-home button{
+    margin-bottom:20px;
+}
+
+
+.navbar-home a{
+    padding:0;
+    color:rgb(49, 51, 63);
+    text-decoration: none;
+    
+}
+
+.navbar-home a:hover{
+    color:rgb(255,140,0);
+    text-decoration: none;
+}
+
+.navbar-home-email{
+    height:90px;
+    width:95%;
+    padding:16px;
+    background-color: rgba(28, 131, 225, 0.1);
+    margin-bottom:0.5cm;
+    border-radius:0.25rem;
+    border:1px solid rgba(28, 131, 225, 0.1);
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+}
+
+.main {
+    margin-left: 400px;
+    padding:75px 75px 0px 20px;
+
+}
+
+.register {
+    margin-left: 330px;
+    margin-top:10px;
+}
+
+.btn-group a{
+    color:black;
+    font-size: medium;
+}
+
+.btn-group button{
+    margin-top:1cm;
+    background-color: white;
+    width:300px;
+}
+
+.maintitle{
+    font:bold; 
+    margin:1cm;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight:700;
+    color:rgb(49,51,63);
+    line-height:1.4;
+}
+
+.lastphrase{
+    font-family:"Source Code Pro", monospace;
+    margin-left:1.3cm;
+}
+
+.download{
+    margin-left:12.5cm;
+    font-family:"Source Sans Pro", sans-serif;
+    font-weight:400;
+    color:rgb(49,51,63);
+    line-height:1.4;
+    font-size: calc(1.3rem + .6vw);
+    position:relative;
+}
+
+.download input{
+    width:70%;
+}
+
+.changement:hover{
+    color:rgb(255,140,0);
+}
