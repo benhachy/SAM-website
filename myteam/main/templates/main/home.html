@@ -11,16 +11,12 @@
 
 <button class="btn btn-default"> <a href="/logout">Se déconnecter </a></button>
 
-{% if False %}
-<form method="GET">
-  <button type ="submit" class="btn btn-default" name="Modify" value="Modify" >Modifier mon mot de passe </button>
-</form>
-{% endif %}
 
-<form action="password/">
-  <button class="btn btn-default" >Modifier mon mot de passe </button>
+<form action="/home/password/">
+  <button class="btn btn-default" ><span class = "changement" >Modifier mon mot de passe </span> </button>
 </form>
 
+ 
 {% if show == 1 %}
   {% load crispy_forms_tags %}
   <form method ="POST">
@@ -114,7 +110,7 @@
     <br>
     <input class="form-control form-control-lg" id="formFileLg" type="file" name="file" style="font-size:17px; width:79%;" multiple>
     
-    <button type="submit" class ="btn btn-lg btn-info" name="upload" value="upload" style="margin-top:0.5cm; margin-bottom:0.5cm;" > Upload</button>
+    <button type="submit" class ="btn btn-lg btn-info" name="upload" value="upload" style="margin-top:0.5cm; margin-bottom:0.5cm;" > <span class="changement">Upload</span></button>
     </a>
   </form>   
   {% block success %}

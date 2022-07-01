@@ -116,3 +116,11 @@
 .changement:hover{
     color:rgb(255,140,0);
 }
+
+.select-menu{
+    width : 300px;
+    height : 1cm;
+}
+.formulaire-inscription input{
+    margin-bottom:1cm !important;
+}

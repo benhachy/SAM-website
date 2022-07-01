@@ -10,7 +10,7 @@ from django.views.generic import FormView, DetailView, ListView
 from django.contrib.auth.models import User
 
 import sys
-sys.path.append('c:\\Users\\Gebruiker\\OneDrive\\Bureau\\SAM-website')
+sys.path.append('..\\')
 
 from ML.ml import naivemodel
 
