@@ -4,25 +4,21 @@
 
     <h3 style = "margin-top:0mm ;">Authentification</h4>
     
-    <div class="btn-group" >
-        
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: black; height:40px; border-color:orange; ">
-            {% block Aremplir %}Connexion{% endblock %}
-        </button>
-        
-        <div class="dropdown-menu" style="width:300px;">
-            <a class="dropdown-item" href="/">Connexion</a>
-            <a class="dropdown-item" href="/register/">Inscription</a>
-            <div class="dropdown-divider"></div>
-            
-            <a class="dropdown-item" href="/recuperation/">Mot de passe oublié</a>
+    
+    <br>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">{% block Aremplir %}Connexion{% endblock %}</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="/">Connexion</a>
+          <a href="/register/">Inscription</a>
+          <a href="/recuperation">Mot de passe oublié</a>
         </div>
-    </div>
+      </div>
 
 
     <br><br>
     {% load crispy_forms_tags %}
-    <form method="post" class="from-group" style="margin-top:1cm; ">
+    <form id="toMove" method="post" class="from-group" style="margin-top:1cm; ">
         {% csrf_token %}
         {% block select %}
             {{form|crispy}}
