@@ -135,7 +135,8 @@ def home(request):
                     for file in files: 
                             now = datetime.now()
                             date = now.strftime("%Y/%m/%d")
-                            chemin = "media/%s/%s/%s" %(date,request.user.username,file.name)
+                            nom = file.name.replace(' ','_')
+                            chemin = "media/%s/%s/%s" %(date,request.user.username,nom)
                             # Traitement du fichier par le model
                             resultat = naivemodel(chemin)
                             # Dictionnaire contenant le résultat de chaque fichier

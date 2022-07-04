@@ -22,7 +22,8 @@ def update_filename(instance, filename):
     date = now.strftime("%Y\\%m\\%d\\")
 
     format = instance.username
-    toadd =  os.path.join(date, format, instance.file.name)
+    nom = instance.file.name.replace(' ', '_')
+    toadd =  os.path.join(date, format, nom)
 
     # Le chemin du fichier
     toremove = os.path.join("media\\", toadd)
