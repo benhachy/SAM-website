@@ -3,16 +3,23 @@
 {% block results %}
 
     {% for key, val in dic.items %}
-        <p>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style ="margin-top:0.4cm;">
-                {{key}}
-            </button>
-        </p>
-          <div class="collapse" id="collapseExample" style="width:79%;"  >
-            <div class="card card-body" style="font-size:1.7rem; margin-bottom: 1cm;">
-                {{val}}
+
+        <div id="result" class="result">
+            <h4> {{key}} </h4>
+            
+            <button class="reduire">réduire</button>
+            <div id="toHide">
+                <div class="result-text">
+                    <p> {{val}} </p>
+                </div>
+
+                <div class = "montant">
+                        <input type="number" step="10" min=0>
+                        <button type="submit" class="evaluer">Évaluer la cohérence du montant</button>
+                </div>
             </div>
-          </div>
+        </div>
+          
         
     {% endfor %}
 
