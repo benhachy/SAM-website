@@ -1,4 +1,0 @@
-- Reglage couleur (Connexion/ Inscription ... )
-
-- Hieararchie des fichiers HTML
-
