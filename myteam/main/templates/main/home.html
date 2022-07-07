@@ -2,122 +2,126 @@
 
 
 {% block navbar %}
-<div class="navbar-home">
+  <div class="navbar-home">
 
-<div class= "navbar-home-email">
-    <p style="color:rgb(30, 103, 119);">Connecté en tant que</p>
-    <a href="mailito:{{user.email}}">{{user.email}}</a>
-</div>
-
-<button class="btn btn-default"> <a href="/logout">Se déconnecter </a></button>
-
-
-<form action="/home/password/">
-  <button class="btn btn-default" ><span class = "changement" >Modifier mon mot de passe </span> </button>
-</form>
-
- 
-{% if show == 1 %}
-  {% load crispy_forms_tags %}
-  <form method ="POST">
-  {% csrf_token %}
-  {{form_modify|crispy}}
-  <button type="submit" class="btn btn-primary" name="change_password" value="change_password" style="margin-top:1cm; width:8cm;">Modifier mon mot de passe</button>
-  </form>
-
-  {% if failed == 1 %}
-    <div class= "navbar-home-email" style="width:320px; height:auto; background-color: rgba(255,165,0,0.4);border:1px solid rgba(255,165,0,0.4); margin-left:0cm" >
-    <p id="section"> Avez vous bien rempli les champs au-dessus? </p>
+    <div class= "navbar-home-email">
+        <p style="color:rgb(30, 103, 119);">Connecté en tant que</p>
+        <a href="mailito:{{user.email}}">{{user.email}}</a>
     </div>
-  {% endif %}
 
-{% endif %}
-
-{% block change-password %}
-{% endblock %}
+    <button class="btn btn-default"> <a href="/logout">Se déconnecter </a></button>
 
 
-{% block email-sent %}
-{% endblock %}
+    <form action="/home/password/">
+      <button class="btn btn-default" ><span class = "changement" >Modifier mon mot de passe </span> </button>
+    </form>
+  
+    {% if show == 1 %}
+      {% load crispy_forms_tags %}
 
-{% block password-success %}
-{% endblock %}
+      <form method ="POST">
+        {% csrf_token %}
+        {{form_modify|crispy}}
+        <button type="submit" class="btn btn-primary" name="change_password" value="change_password" style="margin-top:1cm; width:8cm;">Modifier mon mot de passe</button>
+      </form>
+
+      {% if failed == 1 %}
+        <div class= "navbar-home-email" style="width:320px; height:auto; background-color: rgba(255,165,0,0.4);border:1px solid rgba(255,165,0,0.4); margin-left:0cm" >
+        <p id="section"> Avez vous bien rempli les champs au-dessus? </p>
+        </div>
+      {% endif %}
+
+    {% endif %}
+
+    {% block change-password %}
+    {% endblock %}
 
 
+    {% block email-sent %}
+    {% endblock %}
 
+    {% block password-success %}
+    {% endblock %}
 
-</div>
+  </div>
 {% endblock %}
 
 
 {% block connected %}
 {% endblock %}
 
-{% block info%}
-<div class="container" style="margin-left:12cm; width:1300px;">
-    <div class="panel-group" id="accordion">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Objectif et fonctionnement de la plateforme</a>
-          </h4>
-        </div>
-        <div id="collapse1" class="panel-collapse collapse"  ">
-          <div class="panel-body">SAM permet de caractériser un projet en 4 catégories :
-            <ol>
-                <br>
-                <li>Très probablement R&D ;</li>
-                <li>Probablement R&D ;</li>
-                <li>Innovation mais pourrait passer en R&D ;</li>
-                <li>Très probablement innovation.</li>
-            </ol>
-            <p>Il permet aujourd’hui de valider l’ordre de grandeur du budget déclaré : cohérent ou incohérent. Il ne permet pas de définir précisément le montant nécessaire à la réalisation des travaux décrits.</p>
+{% block info %}
+  <div class="container" style="margin-left:12cm; width:1300px;">
+      <div class="panel-group" id="accordion">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Objectif et fonctionnement de la plateforme</a>
+            </h4>
+          </div>
+          
+          <div id="collapse1" class="panel-collapse collapse"  ">
+            <div class="panel-body">SAM permet de caractériser un projet en 4 catégories :
+              <ol>
+                  <br>
+                  <li>Très probablement R&D ;</li>
+                  <li>Probablement R&D ;</li>
+                  <li>Innovation mais pourrait passer en R&D ;</li>
+                  <li>Très probablement innovation.</li>
+              </ol>
+              <p>Il permet aujourd’hui de valider l’ordre de grandeur du budget déclaré : cohérent ou incohérent. Il ne permet pas de définir précisément le montant nécessaire à la réalisation des travaux décrits.</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Cadre d'utilisation et limites</a>
-          </h4>
-        </div>
-        <div id="collapse2" class="panel-collapse collapse">
-          <div class="panel-body">Vous pouvez télécharger un fichier selon les formes .txt, .docx ou .pdf dans la boite de chargement ci-dessous. SAM ira chercher la section correspondante à la description des travaux. Vous pouvez ainsi télécharger un fichier comprenant plusieurs synthèses techniques mais aussi charger plusieurs fichiers à traiter à la fois. Un premier signal indiquera que la description des travaux a été identifiée. L’outil fonctionne pour une taille de description supérieure à 3 pages et les temps de calcul peuvent être importants pour une taille de description supérieure à 15 pages. Une inactivité prolongée sur la plate-forme peut nécessiter une nouvelle session.</div>
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Données personnelles</a>
-          </h4>
-        </div>
-        <div id="collapse3" class="panel-collapse collapse">
-          <div class="panel-body">Les synthèses ainsi que l'ensemble des données personnelles entrées dans la plateforme sont employées dans le strict cadre du fonctionnement de l'application. Les données sont supprimées dès la déconnexion. Elles sont en aucun mémorisées et utilisées à d'autres fins par MYTEAM, cédées ou vendues à des tiers.
+
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Cadre d'utilisation et limites</a>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">Vous pouvez télécharger un fichier selon les formes .txt, .docx ou .pdf dans la boite de chargement ci-dessous. SAM ira chercher la section correspondante à la description des travaux. Vous pouvez ainsi télécharger un fichier comprenant plusieurs synthèses techniques mais aussi charger plusieurs fichiers à traiter à la fois. Un premier signal indiquera que la description des travaux a été identifiée. L’outil fonctionne pour une taille de description supérieure à 3 pages et les temps de calcul peuvent être importants pour une taille de description supérieure à 15 pages. Une inactivité prolongée sur la plate-forme peut nécessiter une nouvelle session.</div>
           </div>
         </div>
-      </div>
-    </div> 
-  </div>
-      
-{% endblock%}
+
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Données personnelles</a>
+            </h4>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">Les synthèses ainsi que l'ensemble des données personnelles entrées dans la plateforme sont employées dans le strict cadre du fonctionnement de l'application. Les données sont supprimées dès la déconnexion. Elles sont en aucun mémorisées et utilisées à d'autres fins par MYTEAM, cédées ou vendues à des tiers.
+            </div>
+          </div>
+        </div>
+
+      </div> 
+    </div>
+        
+{% endblock %}
 
 {% block download %}
-<div class="download" >
-  <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <h3>Téléchargez vos synthèses ici :</h3>
-    <p style="font-size:medium;">Seul les formats: <em>pdf</em>, <em>txt</em> et <em>docx</em> sont acceptés</p>
-    <br>
-    <input class="form-control form-control-lg" id="formFileLg" type="file" name="file" style="font-size:17px; width:1300px;" multiple>
-    
-    <button type="submit" class ="btn btn-lg btn-info" name="upload" value="upload" style="margin-top:0.5cm; margin-bottom:0.5cm;" > <span class="changement">Upload</span></button>
-    </a>
-  </form>   
-  {% block success %}
-    
-  {% endblock %}
-</div>
-   
+  <div class="download" >
+      <h3>Téléchargez vos synthèses ici :</h3>
+      <p style="font-size:medium;">Seul les formats: <em>pdf</em>, <em>txt</em> et <em>docx</em> sont acceptés</p>
+      <br>
 
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- Input de téléchargement-->
+        <input class="form-control form-control-lg" id="formFileLg" type="file" name="file" style="font-size:17px; width:1300px;" multiple>
+        <button type="submit" class ="btn  btn-info" name="upload" value="upload" style="margin-top:0.5cm; margin-bottom:0.5cm; height:auto; font-size: 17px;" > <span class="changement">Télécharger vos fichiers ici </span></button>
+        </a>
+      </form>   
+
+      {% block success %}
+      {% endblock %}
+
+  </div>
 {% endblock %}
 

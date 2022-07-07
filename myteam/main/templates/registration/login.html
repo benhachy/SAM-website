@@ -1,12 +1,10 @@
 {% extends 'main/base.html' %}
 
 {% block navbar %}
-
     <h3 style = "margin-top:0mm ;">Authentification</h4>
-    
-    
     <br>
-    <div class="dropdown">
+    
+      <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">{% block Aremplir %}Connexion{% endblock %}</button>
         <div id="myDropdown" class="dropdown-content" style="border-radius:10px;">
           <a href="/">Connexion</a>
@@ -14,9 +12,9 @@
           <a href="/recuperation">Mot de passe oublié</a>
         </div>
       </div>
-
-
+      
     <br><br>
+    
     {% load crispy_forms_tags %}
     <form id="toMove" method="post" class="from-group" style="margin-top:1cm; ">
         {% csrf_token %}
@@ -24,7 +22,7 @@
             {{form|crispy}}
         {% endblock %}
         <br>     
-        {% block bouton %}<button type="submit" class="btn btn-primary"> <span class="changement"> Se connecter </span></button>   {% endblock %}
+        {% block bouton %} <button type="submit" class="btn btn-primary"> <span class="changement"> Se connecter </span></button>   {% endblock %}
     </form>
 
     

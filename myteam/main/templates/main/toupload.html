@@ -1,16 +1,15 @@
 {% extends 'main/home.html' %}
-
 {% load static %}
 
 {% block save-bas %}
-<a href="/home">
- <img src="{% static 'main/images/myteam.jpeg' %}" alt="myteam_logo" style="margin-left:1cm">
-</a>
+    <a href="/home">
+        <img src="{% static 'main/images/myteam.jpeg' %}" alt="myteam_logo" style="margin-left:1cm">
+    </a>
 {% endblock %}
 
 {% block success %}
     <div id ="hideMe">
-        <div class= "navbar-home-email" style="width:1300px; height:1.3cm; background-color: rgba(240,128,128,0.4);border:1px solid rgba(240,128,128,0.5); " >
+        <div class= "navbar-home-email" style="width:1300px; height:1.3cm; background-color: rgba(255,165,0,0.4);border:1px solid rgba(255,165,0,0.4);" >
             <p id="section">Veuillez séléctionner un fichier s'il vous plait</p>
         </div>
     </div>

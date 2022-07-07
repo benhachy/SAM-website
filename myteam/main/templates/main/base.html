@@ -1,8 +1,7 @@
 {% load static %}
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html>
-    
     <head>
         <title>{%block title%}SAM - Synthesis Analysis Motor{%endblock%}</title>
 
@@ -23,13 +22,10 @@
         <script src="{% static 'js/interactResultCard.js' %}" async></script>
     </head>
 
-    <body>
-      
+    <body> 
         <div class="sidenav" >
-
-        {%block navbar%}
-        <p> </p>
-        {%endblock%}
+            {%block navbar%}
+            {%endblock%}
         </div>
 
         {% block register-error %}
@@ -37,35 +33,34 @@
         
 
         <div class="main">
-            
             {% block save-bas %}
-            <a href="/home">
-            <img src="{% static 'main/images/myteam.jpeg' %}" alt="myteam_logo" style="margin:1cm;">
-            </a>
+                <a href="/home">
+                    <img src="{% static 'main/images/myteam.jpeg' %}" alt="myteam_logo" style="margin:1cm;">
+                </a>
             {% endblock %}
             
             <h1 class="maintitle" >SAM : Synthesis Analysis Motor</h2>
             <p style="margin: 1cm; margin-bottom: 0; margin-left:1.3cm;">SAM est un outil d’analyse de la nature d’un projet par la description des travaux réalisés. Il estime le niveau de difficulté technologique dans sa réalisation (<em>Innovation</em> vs <em>R&D</em>). SAM permet aussi de valider la cohérence des budgets déclarés.</p>
             <br>
+
             {% block connected%}
-            <p class="lastphrase">Veuillez vous connecter ou créer un compte avec votre clé MYTEAM.</p>
+                <p class="lastphrase">Veuillez vous connecter ou créer un compte avec votre clé MYTEAM.</p>
             {% endblock %}
         </div>
 
         {% block info%}
         {% endblock %}
         
-       {% block download%}
-       {% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        
+        {% block download%}
+        {% endblock %}
 
-    <a id="bottom"></a>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+            
+        <!-- Pour descendre au bas de la page-->
+        <a id="bottom"></a>
 
     </body>
-
-
 </html>

@@ -2,42 +2,42 @@
 
 {% block results %}
     
-<div class="folders">
-    {% for key, val in dic_files.items %}
-    
-        <div id="result" class="result">
-            <h4> {{key}} </h4>
-            
-            <button class="reduire">réduire</button>
-            <div id="toHide">
-                <div class="result-text" style="text-align: center;">
-                    <p> {{val}} </p>
-                </div>
+    <div class="folders">
+        {% for key, val in dic_files.items %}
+        
+            <div id="result" class="result">
+                <h4> {{key}} </h4>
                 
-                <form method="GET">
-                    <div class = "montant">
-                        <input type="number" step="10" min=0 name="montant" value="{{montant}}" >
-                        <button type="submit" class="evaluer" name="evaluer" value="{{key}}" >Évaluer la cohérence du montant</button>
+                <button class="reduire">réduire</button>
+                <div id="toHide">
+                    <div class="result-text" style="text-align: center;">
+                        <p> {{val}} </p>
                     </div>
-                </form>
-                
-                {% if key == card %}
-                    {% if coherent == 1 %}
-                        <div class= "navbar-home-email" style="width:279px; padding-top:2mm; height:1cm; background-color: rgba(185, 254, 185, 0.5);border:1px solid rgba(185, 254, 185, 0.5); margin-left:20px; border-radius: 20px; text-align: center;" >
-                            <p id="section">Montant cohérent</p>
+                    
+                    <form method="GET">
+                        <div class = "montant">
+                            <input type="number" step="10" min=0 name="montant" value="{{montant}}" >
+                            <button type="submit" class="evaluer" name="evaluer" value="{{key}}" >Évaluer la cohérence du montant</button>
                         </div>
-                    {% endif %}
+                    </form>
+                    
+                    {% if key == card %}
+                        {% if coherent == 1 %}
+                            <div class= "navbar-home-email" style="width:279px; padding-top:2mm; height:1cm; background-color: rgba(185, 254, 185, 0.5);border:1px solid rgba(185, 254, 185, 0.5); margin-left:20px; border-radius: 20px; text-align: center;" >
+                                <p id="section">Montant cohérent</p>
+                            </div>
+                        {% endif %}
 
-                    {% if coherent == 0 %}
-                        <div class= "navbar-home-email" style="width:279px; padding-top:2mm; height:1cm; background-color: rgba(240,128,128,0.4);border:1px solid rgba(240,128,128,0.5); margin-left:22px; border-radius: 20px; text-align: center;" >
-                            <p id="section">Montant incohérent</p>
-                        </div>
+                        {% if coherent == 0 %}
+                            <div class= "navbar-home-email" style="width:279px; padding-top:2mm; height:1cm; background-color: rgba(240,128,128,0.4);border:1px solid rgba(240,128,128,0.5); margin-left:22px; border-radius: 20px; text-align: center;" >
+                                <p id="section">Montant incohérent</p>
+                            </div>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
+                </div>
             </div>
-        </div>
-           
-    {% endfor %}
-</div>  
+            
+        {% endfor %}
+    </div>  
 
 {% endblock %}

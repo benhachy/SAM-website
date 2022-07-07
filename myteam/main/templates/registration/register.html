@@ -3,11 +3,10 @@
 {% block Aremplir %}Inscription{% endblock %}
 
 {% block select %}
-{% load crispy_forms_tags %}
-
-{{form_register|crispy}}
+    {% load crispy_forms_tags %}
+    {{form_register|crispy}}
 {% endblock %}
 
 {% block bouton%}
-<button type="submit" class="btn btn-success">S'inscrir</button>
+    <button type="submit" class="btn btn-success">S'inscrir</button>
 {% endblock %}
