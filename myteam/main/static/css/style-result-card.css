@@ -10,8 +10,8 @@
     border-color: black;
     /*border-style:double;*/
 
-    margin:10px;
-
+    margin-bottom:15px !important;
+    margin-right:7px !important;
     
 
     font-family: "Source Sans Pro", sans-serif;
@@ -42,7 +42,9 @@
 
     background-color: rgba(185, 254, 185, 0.5);
     border:1px solid rgba(185, 254, 185, 0.5);
+
 }
+
 
 .montant-text{
     font-size:0.9rem;
@@ -106,3 +108,15 @@
 .hide{
     display:none;
 }
+
+
+.folders{
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+  
+    /**width:1200px;*/
+}
+  

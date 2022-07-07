@@ -124,3 +124,15 @@
 .formulaire-inscription input{
     margin-bottom:1cm !important;
 }
+
+#hideMe{
+    animation: hideAnimation 0ms ease-in 15s;
+    animation-fill-mode:forwards;
+}
+
+@keyframes hideAnimation {
+    to {
+        visibility: hidden;
+ 
+    }
+}

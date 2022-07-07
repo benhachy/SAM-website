@@ -100,7 +100,6 @@ def success_password(request):
     return render(request, "registration/success-password.html")
 
 
-
 def home(request):
     '''
     Cette vue permet principalement à l'utilisateur d'utiliser l'outil NLP et offre d'autre fonctionnalités: 
@@ -130,7 +129,8 @@ def home(request):
                             return render(request,"main/tochange.html")
                     
                     # Traitement des fichiers par l'application Machine Learning
-                    dic = {}
+                    global dic_files
+                    dic_files = {}
 
                     for file in files: 
                             now = datetime.now()
@@ -139,16 +139,31 @@ def home(request):
                             chemin = "media/%s/%s/%s" %(date,request.user.username,nom)
                             # Traitement du fichier par le model
                             resultat = naivemodel(chemin)
-                            # Dictionnaire contenant le résultat de chaque fichier
-                            dic[file.name] = resultat
-                    return render(request, "main/result.html", {"dic": dic, "nbr":len(files)})
+                            # dic_filestionnaire contenant le résultat de chaque fichier
+                            dic_files[file.name] = resultat
+                    return render(request, "main/result.html", {"dic_files": dic_files, "nbr":len(files)})
 
                 # Le cas où aucun fichier n'est sélécionné
                 else:
                     return render(request, "main/toupload.html")
-                    
-        # Relie la vue et le gabari main/home.html après l'authentification d'un utilisateur, autrement elle répond à la requête GET envoyé par ce dernier
-        return render(request, "main/home.html")
+        
+
+        ## Ce block sera probablement supprimé (on utilisera plutôt JS)
+        else:
+            # Le cas où la requête GET provient du bouton <<Évaluer la cohérence du montant>>        
+            if request.GET.get("evaluer"):
+                # Vérification si le montant est cohérent ou pas
+                coherent = 0
+                euros = int(request.GET["montant"])
+                # Ici le critère de la cohérence, ---- cnnx NLP ----
+                if  euros > 2000 : 
+                    coherent = 1
+
+                return render(request, "main/result.html", {"coherent":coherent, "dic_files":dic_files, "card":request.GET["evaluer"]})
+                
+            # Relie la vue et le gabari main/home.html après l'authentification d'un utilisateur, autrement elle répond à la requête GET envoyé par ce dernier
+            return render(request, "main/home.html")
+        ##
 
     # Le cas où l'utilisateur n'est pas identifé : redirirection à la page d'authentification
     else :
