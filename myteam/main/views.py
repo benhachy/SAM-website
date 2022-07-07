@@ -159,10 +159,12 @@ def home(request):
                 if  euros > 2000 : 
                     coherent = 1
 
-                return render(request, "main/result.html", {"coherent":coherent, "dic_files":dic_files, "card":request.GET["evaluer"]})
+                response =  render(request, "main/result.html", {"coherent":coherent, "dic_files":dic_files, "card":request.GET["evaluer"]})
+                return response
                 
             # Relie la vue et le gabari main/home.html après l'authentification d'un utilisateur, autrement elle répond à la requête GET envoyé par ce dernier
             return render(request, "main/home.html")
+
         ##
 
     # Le cas où l'utilisateur n'est pas identifé : redirirection à la page d'authentification

@@ -1,16 +1,16 @@
 .sidenav {
     background-color: rgb(240, 242, 246);
-    background-attachment: fixed;
-    flex-shrink: 0;
-    height: 130%;
+    background-attachment: scroll;
+    position: fixed;
+
+    /*width: 355px;*/
+    width:17%;
+    height: 100%;
+
     overflow: auto;
     padding: 6rem 1rem;
-    position: fixed !important;
-    transition: margin-left 300ms ease 0s, box-shadow 300ms ease 0s;
-    width: 355px;
+    
     z-index: 100;
-    margin-left: 0px;
-    text-align:center;
 }
 
 .sidenav a{
