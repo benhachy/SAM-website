@@ -64,8 +64,9 @@
 }
 
 .main {
-    margin-left: 400px;
+    margin-left: 400px !important;
     padding:75px 75px 0px 20px;
+    width:73% !important;
 
 }
 
@@ -87,7 +88,6 @@
 
 .maintitle{
     font:bold; 
-    margin:1cm;
     font-family: "Source Sans Pro", sans-serif;
     font-weight:700;
     color:rgb(49,51,63);
@@ -100,7 +100,6 @@
 }
 
 .download{
-    margin-left:12.5cm;
     font-family:"Source Sans Pro", sans-serif;
     font-weight:400;
     color:rgb(49,51,63);
@@ -132,7 +131,17 @@
 
 @keyframes hideAnimation {
     to {
-        visibility: hidden;
- 
+        visibility: hidden; 
+    }
+}
+
+@media screen and (max-width:1600px){
+    .sidenav{
+        display:none;
+    }
+
+    .main{
+        margin-left:1cm !important;
+        width:100% !important;
     }
 }
