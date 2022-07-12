@@ -137,8 +137,10 @@ def home(request):
                             date = now.strftime("%Y/%m/%d")
                             nom = file.name.replace(' ','_')
                             chemin = "media/%s/%s/%s" %(date,request.user.username,nom)
+                            
                             # Traitement du fichier par le model
                             resultat = naivemodel(chemin)
+                            
                             # dic_filestionnaire contenant le résultat de chaque fichier
                             dic_files[file.name] = resultat
                     return render(request, "main/result.html", {"dic_files": dic_files, "nbr":len(files)})

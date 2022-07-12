@@ -7,7 +7,7 @@
     width:17%;
     height: 100%;
 
-    overflow: auto;
+    overflow: hidden;
     padding: 6rem 1rem;
     
     z-index: 100;
@@ -112,6 +112,8 @@
     width:70%;
 }
 
+
+
 .changement:hover{
     color:rgb(255,140,0);
 }
@@ -137,11 +139,34 @@
 
 @media screen and (max-width:1600px){
     .sidenav{
-        display:none;
+        width: 35%;
+        position:relative;
+        left:15cm;
+        top:2cm;
+        border-radius: 8px;
+        padding-top:0;
+        padding-bottom:10px;
     }
 
     .main{
         margin-left:1cm !important;
-        width:100% !important;
+        width:60% !important;  
+        left:-10cm ;
+        top: 1cm, ;
+        position: relative;
+    }
+
+    body{
+        display:flex;
+    }
+
+    #auth{
+        display:none;
+    }
+
+    #btn-connexion{
+        width:100%;
     }
 }
+
+ 

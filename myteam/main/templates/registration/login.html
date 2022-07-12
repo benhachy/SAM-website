@@ -1,11 +1,12 @@
 {% extends 'main/base.html' %}
 
 {% block navbar %}
-    <h3 style = "margin-top:0mm ; text-align: center;">Authentification</h4>
+    <h3 id ="auth" style = "margin-top:0mm ; text-align: center;"><a href="/login">Authentification</a></h4>
     <br>
-    
+
+    <div class="formulaire">
       <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">{% block Aremplir %}Connexion{% endblock %}</button>
+        <button onclick="myFunction()" class="dropbtn" style="border: 1px solid black">{% block Aremplir %}Connexion{% endblock %}</button>
         <div id="myDropdown" class="dropdown-content" style="border-radius:10px;">
           <a href="/">Connexion</a>
           <a href="/register/">Inscription</a>
@@ -13,22 +14,24 @@
         </div>
       </div>
       
-    <br><br>
+     <br><br>
+  
+      {% load crispy_forms_tags %}
     
-    {% load crispy_forms_tags %}
-    <form id="toMove" method="post" class="from-group" style="margin-top:1cm; ">
-        {% csrf_token %}
-        {% block select %}
-            {{form|crispy}}
-        {% endblock %}
-        <br>     
-        {% block bouton %} <button type="submit" class="btn btn-primary"> <span class="changement"> Se connecter </span></button>   {% endblock %}
-    </form>
-
+      <form id="toMove" method="post" class="from-group" style="margin-top:1cm; ">
+          {% csrf_token %}
+          {% block select %}
+              {{form|crispy}}
+          {% endblock %}
+          <br>     
+          {% block bouton %} <button type="submit" class="btn btn-success" id="btn-connexion"> <span class="changement"> Se connecter </span></button>   {% endblock %}
+      </form>
+    </div>
     
     {% block message %}
     {% endblock %}
 
+    <!-- Message d'erreur d'infos-->
     {% block register-error %}
     {% endblock %}
 

@@ -3,7 +3,7 @@
 
 {% block navbar %}
   <div class="navbar-home">
-
+  
     <div class= "navbar-home-email">
         <p style="color:rgb(30, 103, 119);">Connecté en tant que</p>
         <a href="mailito:{{user.email}}">{{user.email}}</a>
@@ -15,7 +15,7 @@
     <form action="/home/password/">
       <button class="btn btn-default" ><span class = "changement" >Modifier mon mot de passe </span> </button>
     </form>
-  
+    <div class="formulaire">
     {% if show == 1 %}
       {% load crispy_forms_tags %}
 
@@ -42,12 +42,8 @@
 
     {% block password-success %}
     {% endblock %}
-
   </div>
-{% endblock %}
-
-
-{% block connected %}
+  </div>
 {% endblock %}
 
 {% block info %}

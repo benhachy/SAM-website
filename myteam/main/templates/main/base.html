@@ -38,20 +38,18 @@
         
 
         <div class="main">
-            {% block save-bas %}
-                <a href="/home">
-                    <img id="logo" src="{% static 'main/images/myteam.jpeg' %}" alt="myteam_logo" >
-                </a>
-            {% endblock %}
+            
+            <a href="/home" class="logo">
+                <img id="logo" src="{% static 'main/images/myteam.jpeg' %}" alt="myteam_logo" >
+            </a>
             
             <h1 class="maintitle" >SAM : Synthesis Analysis Motor</h2>
             <p style="margin: 0.7cm 0cm 0cm 0.2cm;">SAM est un outil d’analyse de la nature d’un projet par la description des travaux réalisés. Il estime le niveau de difficulté technologique dans sa réalisation (<em>Innovation</em> vs <em>R&D</em>). SAM permet aussi de valider la cohérence des budgets déclarés.</p>
             <br>
 
-            {% block connected%}
+            {% if user.is_authenticated is False %}
                 <p class="lastphrase">Veuillez vous connecter ou créer un compte avec votre clé MYTEAM.</p>
-            {% endblock %}
-        
+            {% endif %}
 
             <!--Présentation des objectifs, cadre d'utilisations de l'outil-->
             {% block info%}
