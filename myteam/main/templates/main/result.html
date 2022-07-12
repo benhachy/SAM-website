@@ -2,6 +2,30 @@
 
 {% block results %}
     
+    {% for doc_name, nbr_detected_projects in dic_projects.items %}
+        
+    {% if nbr_detected_projects == 0 %}
+        <div class= "navbar-home-email" style="width:100%; height:1cm; line-height:100%; padding-top:0.2cm; background-color: rgba(240,128,128,0.4);border:1px solid rgba(240,128,128,0.4);" >
+            <p id="section">
+                Attention ! Nous ne sommes pas parvenus à detecter la description technique des travaux dans le 
+                document {{doc_name}}. Assurez-vous que votre fichier ne contient que cette dernière, ou procédez à ce 
+                découpage manuellement avant de continuer
+            </p>
+        </div>
+    {% else %}
+        <div class= "navbar-home-email" style="width:100%; height:1cm; line-height:100%; padding-top:0.2cm; background-color: rgba(185, 254, 185, 0.5);border:1px solid rgba(185, 254, 185, 0.5);" >
+                <p id="section">
+                    {% if nbr_detected_projects > 1 %}
+                    Nous avons détecté <b>{{nbr_detected_projects}}</b> projets dans le document <em>{{doc_name}}</em>
+                    {% else %}
+                    Nous avons détecté <b>{{nbr_detected_projects}}</b> projet dans le document <em>{{doc_name}}</em>
+                    {% endif %}
+                </p>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+
     <div class="folders">
         {% for key, val in dic_files.items %}
         

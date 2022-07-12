@@ -1,3 +1,4 @@
+from time import perf_counter_ns
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from .forms import RegisterForm, RecuperationForm, PasswordChangingForm
@@ -12,7 +13,7 @@ from django.contrib.auth.models import User
 import sys
 sys.path.append('..\\')
 
-from ML.ml import naivemodel
+import ML.ml as ml
 
 from datetime import datetime
 
@@ -132,18 +133,38 @@ def home(request):
                     global dic_files
                     dic_files = {}
 
+                    global dic_montant
+                    dic_montant= {}
+
+                    global dic_projects
+                    dic_projects = {}
+
                     for file in files: 
-                            now = datetime.now()
-                            date = now.strftime("%Y/%m/%d")
-                            nom = file.name.replace(' ','_')
-                            chemin = "media/%s/%s/%s" %(date,request.user.username,nom)
-                            
-                            # Traitement du fichier par le model
-                            resultat = naivemodel(chemin)
-                            
+                        # Le cas d'un fichier petit
+                        petit = 0
+                        if(len(file) < 1500):
+                            petit = 1
+                            continue
+
+                        now = datetime.now()
+                        date = now.strftime("%Y/%m/%d")
+                        nom = file.name.replace(' ','_')
+                        chemin = "media/%s/%s/%s" %(date,request.user.username,nom)
+                        
+                        # Traitement du fichier par le model
+                        resultat = ml.light_model(file)
+
+                        # nombre de projets détéctés dans le fichier
+                        num_projects = len(resultat)
+                        
+                        dic_projects[file.name] = num_projects
+
+                        for i in range(num_projects):
                             # dic_filestionnaire contenant le résultat de chaque fichier
-                            dic_files[file.name] = resultat
-                    return render(request, "main/result.html", {"dic_files": dic_files, "nbr":len(files)})
+                            dic_files[file.name + str(i)] = resultat[i][0]
+                            dic_montant[file.name + str(i)] = resultat[i][1]
+
+                    return render(request, "main/result.html", {"dic_files": dic_files, "nbr":len(files), "petit":petit, "dic_projects":dic_projects})
 
                 # Le cas où aucun fichier n'est sélécionné
                 else:
@@ -156,9 +177,19 @@ def home(request):
             if request.GET.get("evaluer"):
                 # Vérification si le montant est cohérent ou pas
                 coherent = 0
-                euros = int(request.GET["montant"])
+                montant = int(request.GET["montant"])
+
+                # Montant prédit par l'app NLP pour la fichier correspondant à la carte
+                nom = request.GET["evaluer"]
+                montant_predit = dic_montant[nom]
+                
+                print("###############################")
+                print(request.GET)
+                print(montant_predit)
+                print("###############################")
+
                 # Ici le critère de la cohérence, ---- cnnx NLP ----
-                if  euros > 2000 : 
+                if  ml.process_montant_pred(montant_predit, montant) : 
                     coherent = 1
 
                 response =  render(request, "main/result.html", {"coherent":coherent, "dic_files":dic_files, "card":request.GET["evaluer"]})
