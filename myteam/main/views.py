@@ -22,8 +22,6 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.views import PasswordChangeView
 
 
-
-
 def base(request):
     '''
     Cette vue permet de rediriger l'utilisateur vers la page d'authentification en accédant au site 
@@ -110,6 +108,7 @@ def home(request):
     - Elle permets à l'utilisateur de se déconnecter
     '''
     
+
     # Le cas où l'utilisateur est identifié
     if request.user.is_authenticated :
         if request.method=="POST":
@@ -144,14 +143,14 @@ def home(request):
                     global dic_projects
                     dic_projects = {}
 
-
-                    not_detected = 0
+                    # contient le nombre de projet que chaque fichier contient
+                    global dic_small
+                    dic_small = {}
 
                     for file in files: 
                         # Le cas d'un fichier petit
-                        petit = 0
                         if(len(file) < 1500):
-                            petit = 1
+                            dic_small[file.name] = 1
                             continue
                         
                         # Enregistrement du fichier
@@ -178,7 +177,7 @@ def home(request):
                             dic_files[file.name + str(i)] = resultat[i][0]
                             dic_montant[file.name + str(i)] = resultat[i][1]
 
-                    return render(request, "main/result.html", {"dic_files": dic_files, "nbr":len(files), "petit":petit, "dic_projects":dic_projects})
+                    return render(request, "main/result.html", {"dic_files": dic_files, "nbr":len(files), "dic_small":dic_small, "dic_projects":dic_projects})
 
                 # Le cas où aucun fichier n'est sélécionné
                 else:
@@ -206,7 +205,7 @@ def home(request):
                 if  ml.process_montant_pred(montant_predit, montant) : 
                     coherent = 1
 
-                response =  render(request, "main/result.html", {"coherent":coherent, "dic_files":dic_files, "card":request.GET["evaluer"]})
+                response =  render(request, "main/result.html", {"coherent":coherent, "dic_files":dic_files, "card":request.GET["evaluer"], "dic_small":dic_small, "dic_projects":dic_projects})
                 return response
                 
             # Relie la vue et le gabari main/home.html après l'authentification d'un utilisateur, autrement elle répond à la requête GET envoyé par ce dernier

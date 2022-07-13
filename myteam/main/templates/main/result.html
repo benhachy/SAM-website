@@ -2,10 +2,24 @@
 
 {% block results %}
     
+    <!-- Fichiers dont la synthèse est très courte-->
+    
+    {% for doc_name, small in dic_small.items %}
+        <div class= "navbar-home-email" style="width:100%; height:auto; line-height:100%; padding-top:0.2cm; background-color: rgba(240,128,128,0.4);border:1px solid rgba(240,128,128,0.4);" >
+            <p id="section">
+                La synthèse soumise par le fichier <b>{{doc_name}}</b> est trop courte pour être évaluée.
+            </p>
+        </div>
+    {% endfor %}
+
+
+
+    <!-- Fichiers d'au moins 1500 charactères -->
+
     {% for doc_name, nbr_detected_projects in dic_projects.items %}
         
     {% if nbr_detected_projects == 0 %}
-        <div class= "navbar-home-email" style="width:100%; height:auto; line-height:100%; padding-top:0.2cm; background-color: rgba(240,128,128,0.4);border:1px solid rgba(240,128,128,0.4);" >
+        <div class= "navbar-home-email" style="width:100%; height:auto; line-height:150%; padding-top:0.2cm; background-color: rgba(240,128,128,0.4);border:1px solid rgba(240,128,128,0.4);" >
             <p id="section">
                 Attention ! Nous ne sommes pas parvenus à detecter la description technique des travaux dans le 
                 document <b>{{doc_name}}</b>. Assurez-vous que votre fichier ne contient que cette dernière, ou procédez à ce 
@@ -13,7 +27,7 @@
             </p>
         </div>
     {% else %}
-        <div class= "navbar-home-email" style="width:100%; height:1cm; line-height:100%; padding-top:0.2cm; background-color: rgba(185, 254, 185, 0.5);border:1px solid rgba(185, 254, 185, 0.5);" >
+        <div class= "navbar-home-email" style="width:100%; height:auto; line-height:100%; padding-top:0.2cm; background-color: rgba(185, 254, 185, 0.5);border:1px solid rgba(185, 254, 185, 0.5);" >
                 <p id="section">
                     {% if nbr_detected_projects > 1 %}
                     Nous avons détecté <b>{{nbr_detected_projects}}</b> projets dans le document <b>{{doc_name}}</b>
@@ -25,6 +39,7 @@
         </div>
     {% endfor %}
 
+    <!-- Cartes de résultat-->
 
     <div class="folders">
         {% for key, val in dic_files.items %}

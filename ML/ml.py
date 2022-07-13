@@ -108,7 +108,18 @@ def read_file(file):
 
     # .pdf:
     elif file.content_type == "application/pdf":
-        full_text = parser.from_file(file)['content']
+        from datetime import datetime
+
+        print("#######************##########")
+        print(file.name)
+        print("#######************##########")
+
+        now = datetime.now()
+        date = now.strftime("%Y/%m/%d")
+        nom = file.name.replace(' ','_')
+        chemin = "media/%s/%s/%s" %(date, "benhachy", nom)
+
+        full_text = parser.from_file(chemin)['content']
         texts_list = find_technical_part_in_txt(full_text, key_words)
 
     # .docx:
