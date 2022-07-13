@@ -93,6 +93,18 @@ def find_technical_part_in_txt(contents, key_words):
                 return new_text
 
 
+def extract_username(file_name):
+    username = ""
+    for char in file_name:
+        if char == "_":
+            break
+        else:
+            username += char
+    return username
+
+def delete_username(file_name, username):
+    return file_name[len(username)+1:]
+
 def read_file(file):
     """A function to read an inputed file, transform it into text and extract the parts of interest."""
 
@@ -111,13 +123,13 @@ def read_file(file):
         from datetime import datetime
 
         print("#######************##########")
-        print(file.name)
+        print(extract_username(file.name))
         print("#######************##########")
 
         now = datetime.now()
         date = now.strftime("%Y/%m/%d")
         nom = file.name.replace(' ','_')
-        chemin = "media/%s/%s/%s" %(date, "benhachy", nom)
+        chemin = "media/%s/%s/%s" %(date, extract_username(file.name), nom)
 
         full_text = parser.from_file(chemin)['content']
         texts_list = find_technical_part_in_txt(full_text, key_words)
@@ -227,7 +239,7 @@ def light_model(file):
     for text in texts_list[0]:
 
         print("###############################")
-        print(texts_list)
+        #print(texts_list)
         print("###############################")
 
         # application des models NLP

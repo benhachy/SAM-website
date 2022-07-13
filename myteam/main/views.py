@@ -120,6 +120,8 @@ def home(request):
                     files = request.FILES.getlist('file')
                     
                     for file in files:
+                        file.name = request.user.username + "_" + file.name
+
                         # Types de fichiers acceptés
                         if file.content_type in ["application/pdf", "text/plain", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"]:
                             doc = Fichiers(file = file, username = request.user.username)
@@ -146,14 +148,14 @@ def home(request):
                     # contient le nombre de projet que chaque fichier contient
                     global dic_small
                     dic_small = {}
-
+        
                     for file in files: 
                         # Le cas d'un fichier petit
                         if(len(file) < 1500):
-                            dic_small[file.name] = 1
+                            dic_small[ml.delete_username(file.name, request.user.username)] = 1
                             continue
                         
-                        # Enregistrement du fichier
+                        # Récupération du fichier
                         now = datetime.now()
                         date = now.strftime("%Y/%m/%d")
                         nom = file.name.replace(' ','_')
@@ -163,19 +165,19 @@ def home(request):
                         num_projects = ml.read_file(file)[1]
 
                         if num_projects == 0:
-                            dic_projects[file.name] = 0
+                            dic_projects[ml.delete_username(file.name, request.user.username)] = 0
                             continue
                        
                         # Traitement du fichier par le model
                         resultat = ml.light_model(file)
 
-                        dic_projects[file.name] = num_projects
+                        dic_projects[ml.delete_username(file.name, request.user.username)] = num_projects
 
                         # Traite aussi le cas où le fichier contient plusieurs projets
                         for i in range(num_projects):
                             # dic_filestionnaire contenant le résultat de chaque fichier
-                            dic_files[file.name + str(i)] = resultat[i][0]
-                            dic_montant[file.name + str(i)] = resultat[i][1]
+                            dic_files[ml.delete_username(file.name, request.user.username)+ "-  Projet " + str(i+1)] = resultat[i][0]
+                            dic_montant[ml.delete_username(file.name, request.user.username)+ "-  Projet " + str(i+1)] = resultat[i][1]
 
                     return render(request, "main/result.html", {"dic_files": dic_files, "nbr":len(files), "dic_small":dic_small, "dic_projects":dic_projects})
 
