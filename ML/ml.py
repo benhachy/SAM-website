@@ -101,6 +101,8 @@ def read_file(file):
 
     # .txt:
     if file.content_type == "text/plain":
+        file.open('r')
+
         full_text = str(file.read(), "latin-1")
         texts_list = find_technical_part_in_txt(full_text, key_words)
 
@@ -212,6 +214,10 @@ def light_model(file):
     results_list = []
 
     for text in texts_list[0]:
+
+        print("###############################")
+        print(texts_list)
+        print("###############################")
 
         # application des models NLP
         prediction = import_and_predict(text[0])

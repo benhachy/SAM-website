@@ -2,3 +2,7 @@ myteam/media/
 myteam/db.sqlite3
 ML/app.py
 ML/Modeles_et_fichiers_intermediaires/
+ML/__pycache__/
+myteam/main/__pycache__/
+myteam/myteam/__pycache__/
+myteam/main/migrations/__pycache__/

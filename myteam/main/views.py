@@ -119,6 +119,7 @@ def home(request):
                 if len(request.FILES) > 0 :
                     #file = request.FILES['file']
                     files = request.FILES.getlist('file')
+                    
                     for file in files:
                         # Types de fichiers acceptés
                         if file.content_type in ["application/pdf", "text/plain", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"]:
@@ -130,14 +131,21 @@ def home(request):
                             return render(request,"main/tochange.html")
                     
                     # Traitement des fichiers par l'application Machine Learning
+                    
+                    # contient la nature prédite de chaque projet détécté
                     global dic_files
                     dic_files = {}
 
+                    # contient le montant prédit pour chaque projet
                     global dic_montant
                     dic_montant= {}
 
+                    # contient le nombre de projet que chaque fichier contient
                     global dic_projects
                     dic_projects = {}
+
+
+                    not_detected = 0
 
                     for file in files: 
                         # Le cas d'un fichier petit
@@ -145,20 +153,26 @@ def home(request):
                         if(len(file) < 1500):
                             petit = 1
                             continue
-
+                        
+                        # Enregistrement du fichier
                         now = datetime.now()
                         date = now.strftime("%Y/%m/%d")
                         nom = file.name.replace(' ','_')
                         chemin = "media/%s/%s/%s" %(date,request.user.username,nom)
                         
+                        # Nombre de projets détéctés dans le fichier
+                        num_projects = ml.read_file(file)[1]
+
+                        if num_projects == 0:
+                            dic_projects[file.name] = 0
+                            continue
+                       
                         # Traitement du fichier par le model
                         resultat = ml.light_model(file)
 
-                        # nombre de projets détéctés dans le fichier
-                        num_projects = len(resultat)
-                        
                         dic_projects[file.name] = num_projects
 
+                        # Traite aussi le cas où le fichier contient plusieurs projets
                         for i in range(num_projects):
                             # dic_filestionnaire contenant le résultat de chaque fichier
                             dic_files[file.name + str(i)] = resultat[i][0]
