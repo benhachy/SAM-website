@@ -3,6 +3,11 @@
 import os
 import sys
 
+# Ignoring the CUDA warning from TensorFlow because we don't use GPU acceleration
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+
+import warnings
+warnings.filterwarnings("ignore")
 
 def main():
     """Run administrative tasks."""

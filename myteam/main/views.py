@@ -12,8 +12,9 @@ from django.contrib.auth.models import User
 
 import sys
 sys.path.append('..\\')
+sys.path.append('..\\ML\\Full\\')
 
-import ML.ml as ml
+import ML.Full.ml as ml
 
 from datetime import datetime
 
@@ -169,7 +170,7 @@ def home(request):
                             continue
                        
                         # Traitement du fichier par le model
-                        resultat = ml.light_model(file)
+                        resultat = ml.model(file)
 
                         dic_projects[ml.delete_username(file.name, request.user.username)] = num_projects
 
