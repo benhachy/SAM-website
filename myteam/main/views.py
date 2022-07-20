@@ -149,19 +149,21 @@ def home(request):
                     # contient le nombre de projet que chaque fichier contient
                     global dic_small
                     dic_small = {}
-        
+
+
                     for file in files: 
                         # Le cas d'un fichier petit
                         if(len(file) < 1500):
                             dic_small[ml.delete_username(file.name, request.user.username)] = 1
                             continue
-                        
+                        '''
                         # Récupération du fichier
                         now = datetime.now()
                         date = now.strftime("%Y/%m/%d")
                         nom = file.name.replace(' ','_')
                         chemin = "media/%s/%s/%s" %(date,request.user.username,nom)
-                        
+                        '''
+
                         # Nombre de projets détéctés dans le fichier
                         num_projects = ml.read_file(file)[1]
 
@@ -175,10 +177,15 @@ def home(request):
                         dic_projects[ml.delete_username(file.name, request.user.username)] = num_projects
 
                         # Traite aussi le cas où le fichier contient plusieurs projets
-                        for i in range(num_projects):
-                            # dic_filestionnaire contenant le résultat de chaque fichier
-                            dic_files[ml.delete_username(file.name, request.user.username)+ "-  Projet " + str(i+1)] = resultat[i][0]
-                            dic_montant[ml.delete_username(file.name, request.user.username)+ "-  Projet " + str(i+1)] = resultat[i][1]
+                        if num_projects == 1:
+                            dic_files[ml.delete_username(file.name, request.user.username)] = resultat[0][0]
+                            dic_montant[ml.delete_username(file.name, request.user.username)] = resultat[0][1]
+                        
+                        else:
+                            for i in range(num_projects):
+                                # dic_filestionnaire contient le résultat de chaque fichier
+                                dic_files[ml.delete_username(file.name, request.user.username)+ "-  Projet " + str(i+1)] = resultat[i][0]
+                                dic_montant[ml.delete_username(file.name, request.user.username)+ "-  Projet " + str(i+1)] = resultat[i][1]
 
                     return render(request, "main/result.html", {"dic_files": dic_files, "nbr":len(files), "dic_small":dic_small, "dic_projects":dic_projects})
 
@@ -187,7 +194,7 @@ def home(request):
                     return render(request, "main/toupload.html")
         
 
-        ## Ce block sera probablement supprimé (on utilisera plutôt JS)
+        ## Ce block est à améliorer (on utilisera plutôt JS)
         else:
             # Le cas où la requête GET provient du bouton <<Évaluer la cohérence du montant>>        
             if request.GET.get("evaluer"):
