@@ -14,6 +14,7 @@ import sys
 sys.path.append('..\\')
 sys.path.append('..\\ML\\Full\\')
 
+import os 
 import ML.Full.ml as ml
 
 from datetime import datetime
@@ -146,7 +147,7 @@ def home(request):
                     global dic_projects
                     dic_projects = {}
 
-                    # contient le nombre de projet que chaque fichier contient
+                    # contient le nom des projets dont la synthèse est trop courte pour être évaluer
                     global dic_small
                     dic_small = {}
 
@@ -187,7 +188,43 @@ def home(request):
                                 dic_files[ml.delete_username(file.name, request.user.username)+ "-  Projet " + str(i+1)] = resultat[i][0]
                                 dic_montant[ml.delete_username(file.name, request.user.username)+ "-  Projet " + str(i+1)] = resultat[i][1]
 
-                    return render(request, "main/result.html", {"dic_files": dic_files, "nbr":len(files), "dic_small":dic_small, "dic_projects":dic_projects})
+
+                    # Génération des rapports
+                    now = datetime.now()
+                    nom = file.name.replace(' ','_')
+                    path_to_report = f"media/Reports/{request.user.username}/{request.user.username}{now.hour}{now.minute}{now.second}.txt" 
+
+                    # Création du dossier associé à chaque utilisateur
+                    try:
+                        os.mkdir(f"media/Reports/{request.user.username}")
+                    except:
+                        pass
+
+                    # Création du rapport
+                    with open(path_to_report, 'a+') as report:      
+                        for doc_name, nbr_detected_projects in dic_projects.items():
+                            if nbr_detected_projects == 0:
+                                report.write("Attention ! Nous ne sommes pas parvenus à detecter la description technique des travaux dans le "
+                                             f"document {doc_name}. \nAssurez-vous que votre fichier ne contient que cette dernière, ou procédez à ce "
+                                             " découpage manuellement avant de continuer ! \n" )
+                            elif nbr_detected_projects == 1 :
+                                report.write(f"Nous avons détecté un seul projet dans le document {doc_name} \n")
+                            else:
+                                report.write(f"Nous avons détecté {nbr_detected_projects} projets dans le document {doc_name}\n")
+                       
+                        
+                        ## Fonction en dévelopment
+                        for doc_name in dic_small:
+                            report.write("\n\n" + doc_name + "\n")
+                            report.write(f"La synthèse soumise par le fichier {doc_name} est trop courte pour être évaluée.\n")
+                            report.write("_"*120 + "\n")
+                        for doc_name, nature in dic_files.items():
+                            report.write("\n\n" + doc_name + "\n")
+                            report.write(f"NATURE DE PROJET: {nature} \n")
+                            report.write(f"MONTANT PRÉDIT: {dic_montant[doc_name]} euros \n" + "_"*120 + "\n")
+                            
+
+                    return render(request, "main/result.html", {"dic_files": dic_files, "nbr":len(files), "dic_small":dic_small, "dic_projects":dic_projects, "path_to_report":path_to_report})
 
                 # Le cas où aucun fichier n'est sélécionné
                 else:
@@ -217,7 +254,7 @@ def home(request):
 
                 response =  render(request, "main/result.html", {"coherent":coherent, "dic_files":dic_files, "card":request.GET["evaluer"], "dic_small":dic_small, "dic_projects":dic_projects})
                 return response
-                
+
             # Relie la vue et le gabari main/home.html après l'authentification d'un utilisateur, autrement elle répond à la requête GET envoyé par ce dernier
             return render(request, "main/home.html")
 
@@ -227,4 +264,6 @@ def home(request):
     else :
         return redirect("/login")
 
-
+  
+def tarification(request):
+    return render(request, "main/tarification.html")

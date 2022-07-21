@@ -12,4 +12,5 @@ urlpatterns= [
     path('home/', views.home),
     path('home/password/', views.PasswordsChangeView.as_view(template_name='registration/change-password.html')),
     path('home/success-password/', views.success_password),
+    path('home/tarification/', views.tarification),
 ]

@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+
+{% block navbar %}
+    <div class="navbar-home">
+        <div class= "navbar-home-email">
+            <p style="color:rgb(30, 103, 119);">Connecté en tant que</p>
+            <a href="mailito:{{user.email}}">{{user.email}}</a>
+        </div>
+
+        <button class="btn btn-default"> <a href="/logout">Se déconnecter </a></button>
+
+        <form action="/home/password/">
+            <button class="btn btn-default" ><span class = "changement" >Modifier mon mot de passe </span> </button>
+        </form>
+    </div>
+{% endblock %}
+
+
+{% block info%}
+    <div id="paypal-button-container-P-2V083425H5776364PMLMUSOA"></div>
+    <script src="https://www.paypal.com/sdk/js?client-id=ARNNlJ1Qpvwty01BIE0FZiNVtBVVt3kbdZ8Gs4fD3MPozJyTQyJqf3iUOvK6mOrHT_6OfvdH2QsrQSSb&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+    <script>
+    paypal.Buttons({
+        style: {
+            shape: 'pill',
+            color: 'gold',
+            layout: 'vertical',
+            label: 'subscribe'
+        },
+        createSubscription: function(data, actions) {
+            return actions.subscription.create({
+            /* Creates the subscription */
+            plan_id: 'P-2V083425H5776364PMLMUSOA'
+            });
+        },
+        onApprove: function(data, actions) {
+            alert(data.subscriptionID); // You can add optional success message for the subscriber here
+        }
+    }).render('#paypal-button-container-P-2V083425H5776364PMLMUSOA'); // Renders the PayPal button
+    </script>
+
+{% endblock %}
