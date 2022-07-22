@@ -22,6 +22,8 @@ from main.views import FichierViewset, UserViewset
 
 from rest_framework import routers
 
+from endpoints.urls import urlpatterns as endpoints_urlpatterns
+
 router = routers.SimpleRouter()
 
 router.register('user', UserViewset, basename='user')
@@ -33,7 +35,11 @@ urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),
+
 ]
+
+urlpatterns += endpoints_urlpatterns
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
