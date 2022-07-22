@@ -10,3 +10,5 @@ myteam/main/migrations/__pycache__/
 NLPapplication/
 ML/Full/
 ML/Light/
+*.pyc 
+*.pyo

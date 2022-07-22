@@ -267,3 +267,37 @@ def home(request):
   
 def tarification(request):
     return render(request, "main/tarification.html")
+
+
+from rest_framework.views import APIView
+
+from main.views import Fichiers
+
+from main.serializers import FichierSerializer, UserSerializer
+
+from rest_framework.response import Response
+
+from rest_framework.viewsets import ReadOnlyModelViewSet, ModelViewSet
+
+class FichierViewset(ReadOnlyModelViewSet):
+    
+    serializer_class = FichierSerializer
+
+    def get_queryset(self):
+        return Fichiers.objects.all()
+    
+    '''
+    def get(self, *args, **kwargs):
+        queryset = Fichiers.objects.all()
+        serializer = FichierSerializer(queryset, many=True)
+        return Response(serializer.data)
+    '''
+class UserViewset(ModelViewSet):
+
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        return User.objects.all()
+
+    
+

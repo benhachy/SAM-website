@@ -18,12 +18,21 @@ from django.urls import path, include
 from . import settings
 from django.conf.urls.static import static
 
+from main.views import FichierViewset, UserViewset
+
+from rest_framework import routers
+
+router = routers.SimpleRouter()
+
+router.register('user', UserViewset, basename='user')
+router.register('fichier', FichierViewset, basename ='fichier')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("main.urls")),
     path('', include('django.contrib.auth.urls')),
     path('api-auth/', include('rest_framework.urls')),
+    path('api/', include(router.urls)),
 ]
 
 if settings.DEBUG:
