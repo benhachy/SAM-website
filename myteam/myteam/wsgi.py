@@ -14,3 +14,26 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myteam.settings')
 
 application = get_wsgi_application()
+
+
+# ML registry
+import inspect
+from ml.registry import MLRegistry
+from ml.Full.full import FullModel
+
+try:
+    registry = MLRegistry() # create ML registry
+    # Random Forest classifier
+    fm = FullModel()
+    # add to ML registry
+    registry.add_algorithm(endpoint_name="SAM",
+                            algorithm_object=fm,
+                            algorithm_name="SAM",
+                            algorithm_status="production",
+                            algorithm_version="0.0.1",
+                            owner="MYTEAM",
+                            algorithm_description="Synthesis Analysis Monitor",
+                            algorithm_code=inspect.getsource(FullModel))
+
+except Exception as e:
+    print("Exception while loading the algorithms to the registry,", str(e))

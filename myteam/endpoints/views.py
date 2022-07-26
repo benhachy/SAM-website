@@ -65,3 +65,87 @@ class MLRequestViewSet(
 ):
     serializer_class = MLRequestSerializer
     queryset = MLRequest.objects.all()
+
+
+import json
+from numpy.random import rand
+from rest_framework import views, status
+from rest_framework.response import Response
+from ml.registry import MLRegistry
+from myteam.wsgi import registry
+
+'''
+... the rest of the backend/server/apps/endpoints/views.py file ...
+'''
+
+class PredictView(views.APIView):
+    def post(self, request, endpoint_name, format=None):
+        
+        print(request.query_params)
+
+        algorithm_status = self.request.query_params.get("status", "production")
+        algorithm_version = self.request.query_params.get("version")
+
+
+        print("€€€€€€€€€€€€€€€€€€")
+        print(algorithm_version)
+        print(algorithm_status)
+        print("€€€€€€€€€€€€€€€€€€")
+
+
+        algs = MLAlgorithm.objects.filter(parent_endpoint__name = endpoint_name, status__status = algorithm_status, status__active=True)
+
+
+
+        if algorithm_version is not None:
+            algs = algs.filter(version = algorithm_version, id = 1)
+
+
+        print("$$$$$$$$$$$$$$$$$$$")
+        print(algs)
+        print("€€€€€€€€€€€€€€€€€€")
+
+        if len(algs) == 0:
+            return Response(
+                {"status": "Error", "message": "ML algorithm is not available"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        # To be sure we have one algorithm and not more
+        if len(algs) != 1 and algorithm_status != "ab_testing":
+            return Response(
+                {"status": "Error", "message": "ML algorithm selection is ambiguous. Please specify algorithm version."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        alg_index = len(MLAlgorithm.objects.all()) 
+        if algorithm_status == "ab_testing":
+            alg_index = len(registry.endpoints) if rand() < 0.5 else len(registry.endpoints)-1
+
+        
+
+        print("######alg[registry.endpoints]#######")
+        print(registry.endpoints)
+        print("######alg[alg_index]#######")
+
+        print("######alg_index#######")
+        print(alg_index)
+        print("######alg_index#######")
+
+
+        algorithm_object = registry.endpoints[alg_index]
+        
+        prediction = algorithm_object.compute_prediction(str(request.data))
+
+        label = prediction["label"] if "label" in prediction else "error"
+        ml_request = MLRequest(
+            input_data=json.dumps(request.data),
+            full_response=prediction,
+            response=label,
+            feedback="",
+            parent_mlalgorithm=algs[0],
+        )
+        ml_request.save()
+
+        prediction["request_id"] = ml_request.id
+
+        return Response(prediction)

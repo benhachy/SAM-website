@@ -3,6 +3,9 @@
 import os
 import sys
 
+sys.path.append('..\\')
+sys.path.append('..\\ML\\Full\\')
+
 # Ignoring the CUDA warning from TensorFlow because we don't use GPU acceleration
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 

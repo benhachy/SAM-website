@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'rest_framework',
     'endpoints.apps.EndpointsConfig',
+    'django.test',
 ]
 
 MIDDLEWARE = [
@@ -143,4 +144,5 @@ EMAIL_HOST_USER = 'myteam.youssef@outlook.fr'
 EMAIL_HOST_PASSWORD = '$phpHTML14'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
 

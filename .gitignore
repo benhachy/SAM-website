@@ -2,13 +2,9 @@ myteam/media/
 myteam/db.sqlite3
 ML/app.py
 ML/Modeles_et_fichiers_intermediaires/
-ML/__pycache__/
-ML/Full/Modules_spektral_custom/__pycache__/
-myteam/main/__pycache__/
-myteam/myteam/__pycache__/
-myteam/main/migrations/__pycache__/
 NLPapplication/
 ML/Full/
 ML/Light/
 *.pyc 
 *.pyo
+.vscode/launch.json
