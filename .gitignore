@@ -1,7 +1,5 @@
 myteam/media/
 myteam/db.sqlite3
-ML/app.py
-ML/Modeles_et_fichiers_intermediaires/
 NLPapplication/
 ML/Full/
 ML/Light/
