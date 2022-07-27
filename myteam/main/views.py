@@ -277,6 +277,8 @@ from rest_framework.response import Response
 
 from rest_framework.viewsets import ReadOnlyModelViewSet, ModelViewSet
 
+from main.permissions import IsAdminAuthenticated
+
 class FichierViewset(ReadOnlyModelViewSet):
     
     serializer_class = FichierSerializer
@@ -293,6 +295,7 @@ class FichierViewset(ReadOnlyModelViewSet):
 class UserViewset(ModelViewSet):
 
     serializer_class = UserSerializer
+    permission_classes = [IsAdminAuthenticated]
 
     def get_queryset(self):
         return User.objects.all()
