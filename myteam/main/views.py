@@ -242,11 +242,6 @@ def home(request):
                 # Montant prédit par l'app NLP pour la fichier correspondant à la carte
                 nom = request.GET["evaluer"]
                 montant_predit = dic_montant[nom]
-                
-                print("###############################")
-                print(request.GET)
-                print(montant_predit)
-                print("###############################")
 
                 # Ici le critère de la cohérence, ---- cnnx NLP ----
                 if  ml.process_montant_pred(montant_predit, montant) : 
@@ -266,6 +261,9 @@ def home(request):
 
   
 def tarification(request):
+    '''
+        La vue qui gère la page de tarification
+    '''
     return render(request, "main/tarification.html")
 
 

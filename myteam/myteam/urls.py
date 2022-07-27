@@ -30,7 +30,7 @@ router.register('user', UserViewset, basename='user')
 router.register('fichier', FichierViewset, basename ='fichier')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name="admin"),
     path('', include("main.urls")),
     path('', include('django.contrib.auth.urls')),
     path('api-auth/', include('rest_framework.urls')),
