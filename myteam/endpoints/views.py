@@ -74,11 +74,15 @@ from rest_framework.response import Response
 from ml.registry import MLRegistry
 from myteam.wsgi import registry
 
+from main.permissions import IsAdminAuthenticated
+
 '''
 ... the rest of the backend/server/apps/endpoints/views.py file ...
 '''
 
 class PredictView(views.APIView):
+    permission_classes = [IsAdminAuthenticated]
+
     def post(self, request, endpoint_name, format=None):
         
         algorithm_status = self.request.query_params.get("status", "production")
