@@ -6,6 +6,18 @@ HOST: 127.0.0.1/api/
 SAM-API is a simple API allowing consumers to use SAM which stands for Synthesis Analysis Monitor
 
 
+## Authentification [/token]
+
+### Get the access and refresh tokens [GET]
+
++ Response 200 (application/json)
+        
+        {
+            "refresh" : "refrech-token",
+            "access": "access-token"
+        }
+
+
 ## Make a prediction [/v1/SAM/predict/{?version,status}]
 
 + Parameters
