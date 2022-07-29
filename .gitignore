@@ -6,3 +6,4 @@ ML/Light/
 *.pyc 
 *.pyo
 .vscode/launch.json
+nltk_data/

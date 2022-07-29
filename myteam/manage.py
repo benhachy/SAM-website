@@ -6,6 +6,9 @@ import sys
 sys.path.append('..\\')
 sys.path.append('..\\ML\\Full\\')
 
+import nltk
+nltk.data.path.append('../nltk_data/')
+
 # Ignoring the CUDA warning from TensorFlow because we don't use GPU acceleration
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
