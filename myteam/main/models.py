@@ -51,3 +51,6 @@ class Fichiers(models.Model):
     '''
     file = models.FileField(upload_to=update_filename)
     username = models.CharField(max_length = 200, default="")
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)

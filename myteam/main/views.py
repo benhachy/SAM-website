@@ -164,7 +164,11 @@ def home(request):
                         nom = file.name.replace(' ','_')
                         chemin = "media/%s/%s/%s" %(date,request.user.username,nom)
                         '''
-
+                        import ipdb; ipdb.set_trace()
+                        
+                        from django.core.files.storage import default_storage
+                        file = default_storage.open(f'2022/08/01/{request.user.username}/{file.name.replace(" ","_")}','r')
+                        
                         # Nombre de projets détéctés dans le fichier
                         num_projects = ml.read_file(file)[1]
 

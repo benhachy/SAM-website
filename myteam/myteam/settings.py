@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'endpoints.apps.EndpointsConfig',
     'django.test',
     'rest_framework_simplejwt',
+    'storages',
 ]
 
 REST_FRAMEWORK = {
@@ -150,8 +151,21 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp-mail.outlook.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'myteam.youssef@outlook.fr'
-EMAIL_HOST_PASSWORD = '$phpHTML14'
+EMAIL_HOST_PASSWORD = os.environ.get('MAIL_PASSWORD')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = str(os.environ.get('AWS_STORAGE_BUCKET_NAME'))
 
+#import ipdb; ipdb.set_trace()
+
+AWS_ACCESS_KEY_ID = "AKIAQ5UMET5WNI3QXFVR"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_STORAGE_BUCKET_NAME = "myteam-sam"
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+# Setting the default storage to AWS S3
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
