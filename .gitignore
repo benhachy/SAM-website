@@ -7,4 +7,4 @@ ML/Light/
 *.pyo
 .vscode/launch.json
 nltk_data/
-venv/Lib/
+venv/
