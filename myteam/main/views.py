@@ -164,7 +164,7 @@ def home(request):
                         nom = file.name.replace(' ','_')
                         chemin = "media/%s/%s/%s" %(date,request.user.username,nom)
                         '''
-
+                        import ipdb; ipdb.set_trace()
                         # Nombre de projets détéctés dans le fichier
                         num_projects = ml.read_file(file)[1]
 
@@ -199,7 +199,6 @@ def home(request):
                         os.mkdir(f"media/Reports/{request.user.username}")
                     except:
                         pass
-
                     # Création du rapport
                     with open(path_to_report, 'a+') as report:      
                         for doc_name, nbr_detected_projects in dic_projects.items():
