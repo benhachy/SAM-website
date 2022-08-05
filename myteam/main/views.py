@@ -164,7 +164,6 @@ def home(request):
                         nom = file.name.replace(' ','_')
                         chemin = "media/%s/%s/%s" %(date,request.user.username,nom)
                         '''
-                        import ipdb; ipdb.set_trace()
                         # Nombre de projets détéctés dans le fichier
                         num_projects = ml.read_file(file)[1]
 

@@ -6,3 +6,6 @@ ML/Light/
 *.pyc 
 *.pyo
 .vscode/launch.json
+*.env
+venv/
+cloud_sql_proxy.exe
