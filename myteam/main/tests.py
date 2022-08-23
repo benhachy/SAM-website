@@ -3,9 +3,6 @@ from rest_framework.test import APITestCase
 
 from django.contrib.auth.models import User 
 
-from main.views import FichierViewset, UserViewset
-
-from django.urls import path
 
 class TestUser(APITestCase):
     # Nous stockons l’url de l'endpoint dans un attribut de classe pour pouvoir l’utiliser plus facilement dans chacun de nos tests

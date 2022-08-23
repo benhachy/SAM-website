@@ -1,11 +1,10 @@
-#
 # Copyright 2021 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#     http://www.apache.org/licenses/LICENSE-2.0
+#      http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,26 +12,39 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+# [START runtime]
+# [START gaeflex_py_django_app_yaml]
+runtime: python
+env: flex
+entrypoint: gunicorn -b :$PORT myteam.wsgi
 
-# [START django_app]
-# [START gaestd_py_django_app_yaml]
-runtime: python39
+beta_settings:
+    cloud_sql_instances: sam-website-358409:europe-west9:sam-instance
 
-env_variables:
-  # This setting is used in settings.py to configure your ALLOWED_HOSTS
-  # APPENGINE_URL: sam-website-358409.uc.r.appspot.com
+runtime_config:
+  python_version: 3.7
 
-handlers:
-# This configures Google App Engine to serve the files in the app's static
-# directory.
-- url: /static
-  static_dir: myteam/static/
+threadsafe: true
+manual_scaling:
+  instances: 2
+network: {}
 
-# This handler routes all requests not caught above to your main app. It is
-# required when static routes are defined, but can be omitted (along with
-# the entire handlers section) when there are no static files defined.
-- url: /.*
-  script: auto
-# [END gaestd_py_django_app_yaml]
-# [END django_app]
+resources:
+  cpu: 2
+  memory_gb: 10
+  disk_size_gb: 50
+liveness_check:
+  initial_delay_sec: 300
+  check_interval_sec: 30
+  timeout_sec: 4
+  failure_threshold: 4
+  success_threshold: 2
+readiness_check:
+  check_interval_sec: 5
+  timeout_sec: 4
+  failure_threshold: 2
+  success_threshold: 2
+  app_start_timeout_sec: 300
 
+# [END gaeflex_py_django_app_yaml]
+# [END runtime]

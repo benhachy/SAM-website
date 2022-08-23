@@ -30,3 +30,6 @@ ML/Light/
 
 # Proxy file
 cloud_sql_proxy.exe
+
+.dockerignore
+dockerfile

@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 
 
 app_name = "main"

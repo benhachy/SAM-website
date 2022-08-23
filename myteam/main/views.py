@@ -188,6 +188,7 @@ def home(request):
                                 dic_montant[ml.delete_username(file.name, request.user.username)+ "-  Projet " + str(i+1)] = resultat[i][1]
 
 
+
                     # Génération des rapports
                     now = datetime.now()
                     nom = file.name.replace(' ','_')
