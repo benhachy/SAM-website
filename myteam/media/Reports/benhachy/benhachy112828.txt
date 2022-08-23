@@ -1,0 +1,17 @@
+Nous avons détecté un seul projet dans le document HOLYDIS.txt 
+
+
+test.txt
+La synthèse soumise par le fichier test.txt est trop courte pour être évaluée.
+________________________________________________________________________________________________________________________
+
+
+Vide.txt
+La synthèse soumise par le fichier Vide.txt est trop courte pour être évaluée.
+________________________________________________________________________________________________________________________
+
+
+HOLYDIS.txt
+NATURE DE PROJET: Très probablement innovation 
+MONTANT PRÉDIT: 13073.9931640625 euros 
+________________________________________________________________________________________________________________________

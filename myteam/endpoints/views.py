@@ -71,7 +71,7 @@ import json
 from numpy.random import rand
 from rest_framework import views, status
 from rest_framework.response import Response
-from ml.registry import MLRegistry
+from mlAPI.registry import MLRegistry
 from myteam.wsgi import registry
 
 from main.permissions import IsAdminAuthenticated

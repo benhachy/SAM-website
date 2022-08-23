@@ -18,8 +18,8 @@ application = get_wsgi_application()
 
 # ML registry
 import inspect
-from ml.registry import MLRegistry
-from ml.Full.full import FullModel
+from mlAPI.registry import MLRegistry
+from mlAPI.Full.full import FullModel
 
 try:
     registry = MLRegistry() # create ML registry

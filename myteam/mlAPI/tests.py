@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ml.Full.full import FullModel
+from mlAPI.Full.full import FullModel
 
 
 

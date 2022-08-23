@@ -1,25 +1,17 @@
 from time import perf_counter_ns
-from django.shortcuts import render, redirect, HttpResponse
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.shortcuts import render, redirect
 from .forms import RegisterForm, RecuperationForm, PasswordChangingForm
 
 from django.core.mail import send_mail
 
 from .models import Fichiers
-from django.views.generic import FormView, DetailView, ListView
 
 from django.contrib.auth.models import User
-
-import sys
-sys.path.append('..\\')
-sys.path.append('..\\ML\\Full\\')
 
 import os 
 import ML.Full.ml as ml
 
 from datetime import datetime
-
-from django.contrib.auth import update_session_auth_hash
 
 from django.contrib.auth.views import PasswordChangeView
 
