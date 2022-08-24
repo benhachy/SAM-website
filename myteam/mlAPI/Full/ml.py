@@ -8,10 +8,6 @@ import pickle
 import nltk
 import keras
 import spacy
-
-import ipdb; ipdb.set_trace()
-
-
 from . import knowledge_graph_functions as kg
 from ML.Full.Modules_spektral_custom.loaders import DisjointLoader
 from ML.Full.cnn_gnn_functions import loss, Graphs_Dataset, tokenize_text

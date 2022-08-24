@@ -5,7 +5,7 @@ from Modules_spektral_custom.graph import Graph
 from Modules_spektral_custom.dataset import Dataset
 from tensorflow.keras.losses import binary_crossentropy, mean_absolute_error
 
-dir_path = '../ML/Full/'
+dir_path = 'ML/Full/'
 
 # Load the dictionary of relations:
 dic_edge_num_to_label = {0:"être", 1:"développer/permettre", 2:"avoir", 3:"proposer/offrir", 4:"réaliser/permettre",

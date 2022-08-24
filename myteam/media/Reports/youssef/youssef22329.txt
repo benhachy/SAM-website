@@ -1,5 +1,0 @@
-
-
-test.txt
-La synthèse soumise par le fichier test.txt est trop courte pour être évaluée.
-________________________________________________________________________________________________________________________

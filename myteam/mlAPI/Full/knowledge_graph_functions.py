@@ -8,7 +8,7 @@ import pickle
 # Word Embeddings
 from gensim.models import KeyedVectors
 
-dir_path = 'ML\\Full\\'
+dir_path = 'ML/Full/'
 
 # Load spacy's model:
 nlp = spacy.load(dir_path + "Modeles_et_fichiers_intermediaires/Fine_tuned_spacy_model/")
