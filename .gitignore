@@ -10,5 +10,4 @@ ML/Light/
 venv/
 cloud_sql_proxy.exe
 static/
-staticfiles/
 meda/
