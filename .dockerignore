@@ -1,0 +1,11 @@
+venv/
+ML/Light/
+myteam/media/
+myteam/db.sqlite3
+*.pyc 
+*.pyo
+.vscode/launch.json
+*.env
+venv/
+cloud_sql_proxy.exe
+.git

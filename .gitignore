@@ -6,5 +6,8 @@ ML/Light/
 *.pyc 
 *.pyo
 .vscode/launch.json
-nltk_data/
+*.env
 venv/
+cloud_sql_proxy.exe
+static/
+staticfiles/
