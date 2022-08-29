@@ -157,14 +157,15 @@ def home(request):
                         chemin = "media/%s/%s/%s" %(date,request.user.username,nom)
                         '''
                         # Nombre de projets détéctés dans le fichier
-                        num_projects = ml.read_file(file)[1]
+                        read_result = ml.read_file(file)
+                        num_projects = read_result[1]
 
                         if num_projects == 0:
                             dic_projects[ml.delete_username(file.name, request.user.username)] = 0
                             continue
                        
                         # Traitement du fichier par le model
-                        resultat = ml.model(file)
+                        resultat = ml.model_after_read(read_result[0])
 
                         dic_projects[ml.delete_username(file.name, request.user.username)] = num_projects
 

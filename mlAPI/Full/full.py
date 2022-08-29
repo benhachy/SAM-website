@@ -1,10 +1,4 @@
-import pandas as pd
-import sys
-
-sys.path.append('ML/Full/')
-sys.path.append('ML/')
 # importing the model
-
 from ML.Full.ml import import_and_predict, process_prob_cir, find_technical_part_in_txt
 
 class FullModel:

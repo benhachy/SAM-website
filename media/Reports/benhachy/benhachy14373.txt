@@ -1,0 +1,13 @@
+Nous avons détecté 2 projets dans le document Merged.txt
+
+
+Merged.txt-  Projet 1
+NATURE DE PROJET: Très probablement innovation 
+MONTANT PRÉDIT: 151857.8125 euros 
+________________________________________________________________________________________________________________________
+
+
+Merged.txt-  Projet 2
+NATURE DE PROJET: Probablement R&D  
+MONTANT PRÉDIT: 67071.609375 euros 
+________________________________________________________________________________________________________________________
