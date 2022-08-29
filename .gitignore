@@ -1,6 +1,4 @@
-myteam/media/
-myteam/db.sqlite3
-NLPapplication/
+db.sqlite3
 ML/Full/
 ML/Light/
 *.pyc 
