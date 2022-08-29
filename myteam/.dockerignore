@@ -1,6 +1,5 @@
 venv/
 ML/Light/
-NLPapplication/
 myteam/media/
 myteam/db.sqlite3
 *.pyc 

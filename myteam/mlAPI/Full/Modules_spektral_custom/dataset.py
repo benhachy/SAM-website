@@ -5,7 +5,9 @@ import warnings
 import numpy as np
 import tensorflow as tf
 
-from Modules_spektral_custom.graph import Graph
+from mlAPI.Full.Modules_spektral_custom.graph import Graph
+#from Modules_spektral_custom.graph import Graph
+
 from spektral.data.utils import get_spec
 from spektral.datasets.utils import DATASET_FOLDER
 

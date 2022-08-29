@@ -9,3 +9,5 @@ ML/Light/
 *.env
 venv/
 cloud_sql_proxy.exe
+static/
+staticfiles/

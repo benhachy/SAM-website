@@ -8,6 +8,9 @@ import pickle
 # Word Embeddings
 from gensim.models import KeyedVectors
 
+# vm root
+#dir_path = '/home/vmagent/app/ML/Full/'
+
 dir_path = 'ML/Full/'
 
 # Load spacy's model:

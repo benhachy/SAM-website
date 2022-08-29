@@ -11,8 +11,11 @@ from tika import parser
 
 ### LOADING MODELS ###
 
-dir_path = 'ML/Light/'
+#dir_path = 'ML/Light/'
+# vm root
+#dir_path = '/home/vmagent/app/ML/Full/'
 
+dir_path = 'ML/Full/'
 # Liste des modelès Machine Learning
 models_list = []
 

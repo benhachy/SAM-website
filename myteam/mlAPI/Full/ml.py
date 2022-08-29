@@ -8,14 +8,16 @@ import pickle
 import nltk
 import keras
 import spacy
-from . import knowledge_graph_functions as kg
+import ML.Full.knowledge_graph_functions as kg
 from ML.Full.Modules_spektral_custom.loaders import DisjointLoader
 from ML.Full.cnn_gnn_functions import loss, Graphs_Dataset, tokenize_text
 from spektral.layers import ECCConv, GlobalAvgPool
 
 ### LOADING MODELS ###
-dir_path = 'ML/Full/'
+# vm root
+#dir_path = '/home/vmagent/app/ML/Full/'
 
+dir_path = 'ML/Full/'
 # Loading spacy's model
 
 spacy_model = spacy.load(dir_path + "Modeles_et_fichiers_intermediaires/Fine_tuned_spacy_model/")

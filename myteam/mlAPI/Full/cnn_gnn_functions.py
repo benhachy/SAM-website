@@ -1,9 +1,12 @@
 import numpy as np  # Large, multi-dimensional arrays and matrices manipulations
 import pickle
 
-from Modules_spektral_custom.graph import Graph
-from Modules_spektral_custom.dataset import Dataset
+from ML.Full.Modules_spektral_custom.graph import Graph
+from ML.Full.Modules_spektral_custom.dataset import Dataset
 from tensorflow.keras.losses import binary_crossentropy, mean_absolute_error
+
+# vm root
+#dir_path = '/home/vmagent/app/ML/Full/'
 
 dir_path = 'ML/Full/'
 
