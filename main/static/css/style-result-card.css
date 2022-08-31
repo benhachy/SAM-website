@@ -1,0 +1,122 @@
+
+
+.result{
+    width:320px;
+    height:auto;
+
+    border-radius: 20px;
+    border-width:1px;
+    border-color: black;
+    /*border-style:double;*/
+
+    margin-bottom:15px !important;
+    margin-right:7px !important;
+    
+
+    font-family: "Source Sans Pro", sans-serif;
+    color:rgb(49, 51, 63);
+
+    /*box-shadow: 0px 10px 10px 10px blue;*/
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    
+    /*box-shadow: rgba(28, 131, 225, 0.17) 0px -23px 25px 0px inset, rgba(28, 131, 225, 0.15) 0px -36px 30px 0px inset, rgba(28, 131, 225, 0.1) 0px -79px 40px 0px inset, rgba(28, 131, 225, 0.06) 0px 2px 1px, rgba(28, 131, 225, 0.09) 0px 4px 2px, rgba(28, 131, 225, 0.09) 0px 8px 4px, rgba(28, 131, 225, 0.09) 0px 16px 8px, rgba(28, 131, 225, 0.09) 0px 32px 16px;*/
+    
+    /*box-shadow: rgba(255, 165, 0, 0.17) 0px -23px 25px 0px inset, rgba(255, 165, 0, 0.15) 0px -36px 30px 0px inset, rgba(255, 165, 0, 0.1) 0px -79px 40px 0px inset, rgba(255, 165, 0, 0.06) 0px 2px 1px, rgba(255, 165, 0, 0.09) 0px 4px 2px, rgba(255, 165, 0, 0.09) 0px 8px 4px, rgba(255, 165, 0, 0.09) 0px 16px 8px, rgba(255, 165, 0, 0.09) 0px 32px 16px;*/
+
+}
+.result h4{
+    padding-top:10px;
+    text-align:center;
+}
+
+.result-text{
+    font-size:15px;
+
+    padding-left:12px;
+    margin-left : 20px;
+    
+
+    height : auto;
+    width:280px;
+
+    background-color: rgba(185, 254, 185, 0.5);
+    border:1px solid rgba(185, 254, 185, 0.5);
+
+}
+
+
+.montant-text{
+    font-size:0.9rem;
+
+    padding-left:5px;
+    margin-left : 0px;
+    margin-top:5px;
+
+    height : auto;
+    width:245px;
+
+    background-color: rgba(185, 254, 185, 0.5);
+    border:1px solid rgba(185, 254, 185, 0.5);
+}
+
+
+.montant{
+
+    width: 270px;
+    height:100px;
+
+    border-radius: 5px;
+
+    padding-left:12px;
+    margin-left : 9px;
+
+    margin-top:0.4cm;
+
+   
+}
+
+.montant input{
+    width : 280px;
+    margin-top:15px;
+}
+
+.evaluer{
+    width:280px;
+    margin-top:10px;
+
+    background-color: white;
+
+    border-radius:0.25rem;
+    border-color:gray;
+    border-style: double;
+    border-width: 1px;
+
+    font-weight:400px;
+    font-size:15px;
+    padding:0.25rem 0.75rem;
+}
+
+
+.reduire{
+    position:relative;
+    left:80%;
+    top:-77px;
+    font-size:10px;
+    border-radius: 30px;
+}
+
+.hide{
+    display:none;
+}
+
+
+.folders{
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+  
+    /**width:1200px;*/
+}
+  
