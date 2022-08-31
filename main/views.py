@@ -189,7 +189,7 @@ def home(request):
 
                     # Création du dossier associé à chaque utilisateur
                     try:
-                        os.mkdir(f"media/Reports/{request.user.username}")
+                        os.makedirs(f"media/Reports/{request.user.username}")
                     except:
                         pass
                     # Création du rapport
@@ -215,7 +215,7 @@ def home(request):
                             report.write(f"NATURE DE PROJET: {nature} \n")
                             report.write(f"MONTANT PRÉDIT: {dic_montant[doc_name]} euros \n" + "_"*120 + "\n")
                             
-
+                    # Adaptation Docker : en windows le path_to_report est path_to_report tout simplement
                     return render(request, "main/result.html", {"dic_files": dic_files, "nbr":len(files), "dic_small":dic_small, "dic_projects":dic_projects, "path_to_report":path_to_report})
 
                 # Le cas où aucun fichier n'est sélécionné
