@@ -1,3 +1,9 @@
+!!!
+ If you're cloning directly from github, the ML folder would be empty, hence you wouldn't be able to run the server, so 
+to get the full code please send me a mail in :
+benhachem.youssef40@gmail.com
+!!!
+____________________________________________________________
 To run the server, follow these four simple steps: 
 
 1- Create a python vitural environement using:
@@ -22,5 +28,7 @@ There is also an API available after running the server, read the "readme.md" fi
 The API documentation is available online on :  https://sam94.docs.apiary.io/
 
 _____________________________________________________________
+
+A docker file is also available, so to run a docker container, please build the dockerfile and run the corresponding image.
 
 For more information, please check the project repository on : https://github.com/benhachy/SAM-website
