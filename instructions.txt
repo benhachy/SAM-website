@@ -1,0 +1,26 @@
+To run the server, follow these four simple steps: 
+
+1- Create a python vitural environement using:
+	virtualenv venv
+
+2- Install the required packages using : 
+	pip install -r requirements.txt
+
+3- Run the following commands:
+	python manage.py makemigrations
+	python manage.py migrate
+	
+4- To run the server, execute in the terminal:
+	python manage.py runserver
+
+==> The server will launch on 127.0.0.1:8000 (you can use the browser to open it)
+
+_____________________________________________________________
+
+There is also an API available after running the server, read the "readme.md" file for more information
+
+The API documentation is available online on :  https://sam94.docs.apiary.io/
+
+_____________________________________________________________
+
+For more information, please check the project repository on : https://github.com/benhachy/SAM-website
